@@ -15,7 +15,7 @@ export default function NavBar() {
     <nav className="flex justify-between items-center p-10 z-50">
       <div className="flex items-center gap-4">
         <img src={logo} className="h-20 w-auto"></img>
-        <div className="text-4xl text-black font-semibold hover:text-lime-700 transition duration-300 cursor-pointer">
+        <div className="text-4xl text-black font-semibold hover:text-lime-700 transition duration-300 cursor-pointer ">
           <Link to="/">BeautyGaloreSalon</Link>
         </div>
       </div>

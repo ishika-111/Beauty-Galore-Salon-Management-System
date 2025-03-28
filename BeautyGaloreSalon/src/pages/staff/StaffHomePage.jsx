@@ -1,3 +1,3 @@
 export default function StaffHomePage() {
-  return <></>;
+  return <>this is staff</>;
 }

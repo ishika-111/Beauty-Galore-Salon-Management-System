@@ -9,15 +9,18 @@ export default function CoursePage() {
       title: "Diploma in Hairdressing Courses",
     },
     {
-      image: "https://example.com/image2.jpg",
-      title: "Advanced Hairdressing Courses",
+      image:
+        "https://images.pexels.com/photos/4586708/pexels-photo-4586708.jpeg?auto=compress&cs=tinysrgb&w=600",
+      title: "Masters in Cosmetology",
     },
     {
-      image: "https://example.com/image3.jpg",
+      image:
+        "https://images.pexels.com/photos/2799609/pexels-photo-2799609.jpeg?auto=compress&cs=tinysrgb&w=600",
       title: "Basic Hair Cutting Techniques",
     },
     {
-      image: "https://example.com/image4.jpg",
+      image:
+        "https://images.pexels.com/photos/247287/pexels-photo-247287.jpeg?auto=compress&cs=tinysrgb&w=600",
       title: "Makeup Artistry Courses",
     },
   ];
@@ -38,7 +41,7 @@ export default function CoursePage() {
         </div>
       </div>
       <div>
-        <h1 className="font-semibold text-3xl text-center">Our Courses</h1>
+        <h1 className="font-semibold text-3xl text-center mt-3">Our Courses</h1>
       </div>
       <div className=" text-black py-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 px-4 sm:px-6 lg:px-12">

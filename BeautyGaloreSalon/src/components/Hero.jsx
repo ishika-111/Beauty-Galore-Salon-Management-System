@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import Bgvideo from "../assets/VideoBG.mp4";
+import ServiceCard from "./ServiceCard";
 
 export default function Hero() {
   return (
@@ -53,9 +54,11 @@ export default function Hero() {
         </div>
       </div>
       <div>
-        <h2 className="text-3xl text-center font-semibold">Our Services</h2>
-        <div className="flex gap-4 ">
-          <div></div>
+        <h2 className="text-3xl text-center font-semibold animate-bounce text-black">
+          Our Services
+        </h2>
+        <div className="flex justify-evenly ">
+          <ServiceCard limit={4} />
         </div>
       </div>
     </div>

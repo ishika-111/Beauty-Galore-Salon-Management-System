@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 export default function CustomerRegisterForm() {
   const [userInput, setUserInput] = useState({
@@ -7,25 +8,73 @@ export default function CustomerRegisterForm() {
     name: "",
     password: "",
   });
+  const Validation = (userInput) => {
+    let errors = {};
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-  const handleSignUp = async (e) => {
-    e.preventDefault();
-    axios
-      .post("http://localhost:5000/api/users/customer/register", userInput)
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-    console.log(userInput);
+    if (!userInput.email) {
+      errors.email = "Email is required";
+    } else if (!emailRegex.test(userInput.email)) {
+      errors.email = "Email is invalid";
+    }
+
+    if (!userInput.password) {
+      errors.password = "Password is required";
+    } else if (userInput.password.length < 6) {
+      errors.password = "Password must be more than 6 characters";
+    }
+
+    if (!userInput.name) {
+      errors.name = "First Name is required";
+    } else if (userInput.name.length < 3) {
+      errors.tName = " Name must be more than 3 characters";
+    }
+
+    return errors;
   };
+  const handleBlur = (e) => {
+    setErrors({ ...errors, [e.target.name]: "" });
+  };
+
+  const [errors, setErrors] = useState({});
+  const handleSignup = async (e) => {
+    e.preventDefault();
+
+    const validationErrors = Validation(userInput);
+    setErrors(validationErrors);
+
+    // If there are validation errors, do not proceed
+    if (Object.keys(validationErrors).length > 0) {
+      return;
+    }
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/users/customer/register",
+        userInput
+      );
+      console.log("Response:", response);
+      toast.success("Registration successful");
+    } catch (error) {
+      console.error("Error response:", error.response); // Log error response
+
+      if (
+        error.response &&
+        error.response.data.message === "Email is already in use."
+      ) {
+        setErrors({ email: "Email is already in use." });
+        toast.error("Email is already in use.");
+      } else {
+        toast.error("Registration failed. Please try again.");
+      }
+    }
+  };
+
   return (
     <div>
       <div className="text-3xl font-semibold mb-4 hover:text-lime-700">
         Customer Register
       </div>
-      <form className="flex flex-col gap-4" onSubmit={handleSignUp}>
+      <form className="flex flex-col gap-4" onSubmit={handleSignup}>
         <div>What's your Email?</div>
         <label className="input input-bordered flex items-center gap-2">
           <svg
@@ -45,7 +94,9 @@ export default function CustomerRegisterForm() {
             onChange={(e) =>
               setUserInput({ ...userInput, email: e.target.value })
             }
+            onBlur={handleBlur}
           />
+          {errors.email && <span className="text-danger">{errors.email}</span>}
         </label>
         <div>What's your Username?</div>
         <label className="input input-bordered flex items-center gap-2">
@@ -65,7 +116,9 @@ export default function CustomerRegisterForm() {
             onChange={(e) =>
               setUserInput({ ...userInput, name: e.target.value })
             }
+            onBlur={handleBlur}
           />
+          {errors.name && <span className="text-danger">{errors.name}</span>}
         </label>
         <div>What's your Password?</div>
         <label className="input input-bordered flex items-center gap-2">
@@ -89,12 +142,27 @@ export default function CustomerRegisterForm() {
             onChange={(e) =>
               setUserInput({ ...userInput, password: e.target.value })
             }
+            onBlur={handleBlur}
           />
+          {errors.password && (
+            <span className="text-danger">{errors.password}</span>
+          )}
         </label>
 
         <button className="btn btn-primary text-white" type="submit">
           Register
         </button>
+        <div className="mt-4 text-center">
+          <span className="text-sm text-gray-600">
+            Already have an account?{" "}
+            <a
+              href="/login"
+              className="text-lime-700 hover:text-lime-600 font-medium"
+            >
+              Login
+            </a>
+          </span>
+        </div>
       </form>
     </div>
   );

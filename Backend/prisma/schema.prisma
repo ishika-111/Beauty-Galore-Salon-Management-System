@@ -8,38 +8,75 @@ datasource db {
 }
 
 model User {
-  id       String   @id @default(cuid())
-  email    String   @unique
-  name     String?
-  password String
-  role     Role     @default(USER)
-  products    Product[]
-  Order Order[]
+  id        Int     @id @default(autoincrement())
+  email     String  @unique
+  name      String?
+  password  String
+  role      Role    @default(USER)
+  isVerified Boolean @default(false)
+  verificationToken String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  resetPasswordToken String?  
+  resetPasswordTokenExpiry DateTime? 
+  products Product[]
+  orders   Order[]
+  refreshToken RefreshToken[]
+  appointments Appointment[]
+  staff    Staff?
+}
+model RefreshToken {
+    id     Int    @id @default(autoincrement())
+    token  String @unique
+    userId Int
+    user   User   @relation(fields: [userId], references: [id])
+}
+
+model Staff {
+  id       Int    @id @default(autoincrement())
+  name     String
+  user     User   @relation(fields: [userId], references: [id])
+  userId   Int    @unique
 }
 
 model Admin {
-  id       String   @id @default(cuid())
+  id       Int   @id @default(autoincrement())
   email    String   @unique
   name     String?
   password String
 }
 
+model Appointment {
+  id      Int      @id @default(autoincrement())
+  name    String
+  email   String
+  phone   String
+  date    String   // Store date as String (e.g., "2025-03-12")
+  time    String   // Store time as "HH:mm"
+  service String
+  user    User     @relation(fields: [userId], references: [id])
+  userId  Int      
+  @@unique([date, time]) // Prevent duplicate bookings for the same time slot
+}
+
+
+
 model Product {
-  id        String   @id @default(cuid())
-  title     String
-  description   String
-  image     String?
-  author    User     @relation(fields: [authorId], references: [id])
-  authorId  String
-  Order Order[]
+  id          Int     @id @default(autoincrement())
+  title       String
+  description String
+  image       String?
+  author      User    @relation(fields: [authorId], references: [id])
+  authorId    Int
+  orders      Order[]
 }
 
 model Order {
-  id        String   @id @default(cuid())
-  user      User     @relation(fields: [userId], references: [id])
-  userId    String
-  product   Product  @relation(fields: [productId], references: [id])
-  productId String
+  id        Int     @id @default(autoincrement())
+  user      User    @relation(fields: [userId], references: [id])
+  userId    Int
+  product   Product @relation(fields: [productId], references: [id])
+  productId Int
   total     Float
   status    String?
 }

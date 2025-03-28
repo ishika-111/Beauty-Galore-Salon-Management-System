@@ -10,23 +10,40 @@ import StaffLayout from "./layout/StaffLayout";
 import StaffHomePage from "./pages/staff/StaffHomePage";
 import AboutUsPage from "./pages/customer/AboutUsPage";
 import BookNowPage from "./pages/customer/BookNowPage";
+import { Toaster } from "react-hot-toast";
+import EmailVerifyPage from "./pages/EmailVerifyPage";
+import CustomerRegisterForm from "./components/CustomerRegisterForm";
+import ResetPasswordPage from "./pages/ResetPasswordPage";
+import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 
 export default function App() {
   return (
-    <Routes>
-      <Route path="/" element={<CustomerLayout />}>
-        <Route index element={<HomePage />} />
-        <Route path="/signup" element={<SignUpPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/courses" element={<CoursePage />} />
-        <Route path="/services" element={<ServicePage />} />
-        <Route path="/aboutus" element={<AboutUsPage />} />
-        <Route path="/book" element={<BookNowPage />} />
-      </Route>
-      <Route path="/staff" element={<StaffLayout />}>
-        <Route index element={<StaffHomePage />} />
-      </Route>
-      <Route path="/products" element={<ProductPage />} />
-    </Routes>
+    <>
+      <Toaster position="top-center" reverseOrder={false} />
+      <Routes>
+        <Route path="/" element={<CustomerLayout />}>
+          <Route index element={<HomePage />} />
+          <Route path="/signup" element={<SignUpPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/courses" element={<CoursePage />} />
+          <Route path="/services" element={<ServicePage />} />
+          <Route path="/aboutus" element={<AboutUsPage />} />
+          <Route path="/book" element={<BookNowPage />} />
+          <Route path="/customer/home" element={<HomePage />} />
+          <Route path="/customer/register" element={<CustomerRegisterForm />} />
+          <Route path="/verify-email/:token" element={<EmailVerifyPage />} />
+          <Route path="/products" element={<ProductPage />} />
+          <Route
+            path="/reset-password/:token"
+            element={<ResetPasswordPage />}
+          />
+          <Route path="/forget" element={<ForgotPasswordPage />} />
+        </Route>
+        <Route path="/staff" element={<StaffLayout />}>
+          <Route index element={<StaffHomePage />} />
+          <Route path="/staff/home" element={<StaffHomePage />} />
+        </Route>
+      </Routes>
+    </>
   );
 }

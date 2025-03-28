@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 export default function StaffRegisterForm() {
   const [userInput, setUserInput] = useState({
@@ -7,18 +8,65 @@ export default function StaffRegisterForm() {
     name: "",
     password: "",
   });
+  const Validation = (userInput) => {
+    let errors = {};
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-  const handleSignUp = async (e) => {
+    if (!userInput.email) {
+      errors.email = "Email is required";
+    } else if (!emailRegex.test(userInput.email)) {
+      errors.email = "Email is invalid";
+    }
+
+    if (!userInput.password) {
+      errors.password = "Password is required";
+    } else if (userInput.password.length < 6) {
+      errors.password = "Password must be more than 6 characters";
+    }
+
+    if (!userInput.name) {
+      errors.name = "First Name is required";
+    } else if (userInput.name.length < 3) {
+      errors.tName = " Name must be more than 3 characters";
+    }
+
+    return errors;
+  };
+  const handleBlur = (e) => {
+    setErrors({ ...errors, [e.target.name]: "" });
+  };
+
+  const [errors, setErrors] = useState({});
+  const handleSignup = async (e) => {
     e.preventDefault();
-    axios
-      .post("http://localhost:5000/api/users/staff/register", userInput)
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-    console.log(userInput);
+
+    const validationErrors = Validation(userInput);
+    setErrors(validationErrors);
+
+    // If there are validation errors, do not proceed
+    if (Object.keys(validationErrors).length > 0) {
+      return;
+    }
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/users/staff/register",
+        userInput
+      );
+      console.log("Response:", response);
+      toast.success("Registration successful");
+    } catch (error) {
+      console.error("Error response:", error.response); // Log error response
+
+      if (
+        error.response &&
+        error.response.data.message === "Email is already in use."
+      ) {
+        setErrors({ email: "Email is already in use." });
+        toast.error("Email is already in use.");
+      } else {
+        toast.error("Registration failed. Please try again.");
+      }
+    }
   };
 
   return (
@@ -26,7 +74,7 @@ export default function StaffRegisterForm() {
       <div className="text-3xl font-semibold hover:text-lime-700 mb-4">
         Staff Register
       </div>
-      <form className="flex flex-col gap-4" onSubmit={handleSignUp}>
+      <form className="flex flex-col gap-4" onSubmit={handleSignup}>
         <div>What's your Email?</div>
         <label className="input input-bordered flex items-center gap-2">
           <svg
@@ -96,6 +144,17 @@ export default function StaffRegisterForm() {
         <button className="btn btn-primary text-white" type="submit">
           Register
         </button>
+        <div className="mt-4 text-center">
+          <span className="text-sm text-gray-600">
+            Already have an account?{" "}
+            <a
+              href="/login"
+              className="text-lime-700 hover:text-lime-600 font-medium"
+            >
+              Login
+            </a>
+          </span>
+        </div>
       </form>
     </div>
   );

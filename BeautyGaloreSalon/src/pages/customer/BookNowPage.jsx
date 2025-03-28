@@ -1,124 +1,177 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { toast } from "react-hot-toast";
+import Cookies from "js-cookie";
 
 export default function BookNow() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    address: "",
-    appointmentDate: "01/02/2025", // Default date
-  });
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [date, setDate] = useState("");
+  const [timeSlot, setTimeSlot] = useState("");
+  const [service, setService] = useState("");
+  const [availableTimeSlots, setAvailableTimeSlots] = useState([]);
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  useEffect(() => {
+    setAvailableTimeSlots([
+      "10:00",
+      "11:00",
+      "12:00",
+      "13:00",
+      "14:00",
+      "15:00",
+      "16:00",
+      "17:00",
+      "18:00",
+    ]);
+  }, []);
 
-  const handleSubmit = (e) => {
+  // Handle appointment form submission
+  const handleAppointmentSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission (e.g., send data to server)
-    console.log(formData);
-    alert("Booking submitted (check console for data)");
+
+    const token = Cookies.get("token");
+
+    if (!token) {
+      return toast.error("Please log in first");
+    }
+
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/api/appointment/create",
+        {
+          name,
+          email,
+          phone,
+          date,
+          timeSlot,
+          service,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      toast.success("Appointment booked successfully!");
+    } catch (error) {
+      toast.error(error.response?.data?.error || "Failed to book appointment");
+    }
   };
 
   return (
-    <div className="bg-gray-200 p-8 rounded-lg shadow-md max-w-md mx-auto">
-      <h2 className="text-2xl font-semibold mb-4 text-center">Book Now</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="mb-4">
-          <label
-            htmlFor="name"
-            className="block text-gray-700 font-medium mb-2"
-          >
-            What's your name?
-          </label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            required
-          />
-        </div>
-        <div className="mb-4">
-          <label
-            htmlFor="email"
-            className="block text-gray-700 font-medium mb-2"
-          >
-            What's your Email?
-          </label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            required
-          />
-        </div>
-        <div className="mb-4">
-          <label
-            htmlFor="phone"
-            className="block text-gray-700 font-medium mb-2"
-          >
-            What's your Phone Number?
-          </label>
-          <input
-            type="tel"
-            id="phone"
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-            className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            required
-          />
-        </div>
-        <div className="mb-4">
-          <label
-            htmlFor="address"
-            className="block text-gray-700 font-medium mb-2"
-          >
-            Address
-          </label>
-          <textarea
-            id="address"
-            name="address"
-            value={formData.address}
-            onChange={handleChange}
-            className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            rows="3"
-          />
-        </div>
+    <div className="min-h-screen bg-[#d9e4d3]">
+      <div className="max-w-2xl mx-auto p-8">
+        <h2 className="text-3xl font-bold text-center mb-6 text-green-900">
+          Book Now
+        </h2>
+        <form onSubmit={handleAppointmentSubmit}>
+          <div className="mb-4">
+            <label className="block text-gray-700 font-medium mb-2">
+              What's your name?
+            </label>
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="w-full border-2 border-black px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
+              required
+            />
+          </div>
 
-        <div className="mb-6">
-          <label
-            htmlFor="appointmentDate"
-            className="block text-gray-700 font-medium mb-2"
+          <div className="mb-4">
+            <label className="block text-gray-700 font-medium mb-2">
+              What's your Email?
+            </label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full border-2 border-black px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
+              required
+            />
+          </div>
+
+          <div className="mb-4">
+            <label className="block text-gray-700 font-medium mb-2">
+              What's your Phone Number?
+            </label>
+            <input
+              type="text"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              className="w-full border-2 border-black px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
+              required
+            />
+          </div>
+
+          <div className="mb-4">
+            <label className="block text-gray-700 font-medium mb-2">
+              Time slot
+            </label>
+            <select
+              value={timeSlot}
+              onChange={(e) => setTimeSlot(e.target.value)}
+              className="w-full border-2 border-black px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
+              required
+            >
+              <option value="">Select a time slot</option>
+              {availableTimeSlots.map((slot) => (
+                <option key={slot} value={slot}>
+                  {slot}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="mb-4">
+            <label className="block text-gray-700 font-medium mb-2">
+              Appointment for
+            </label>
+            <select
+              value={service}
+              onChange={(e) => setService(e.target.value)}
+              className="w-full border-2 border-black px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
+              required
+            >
+              <option value="" disabled>
+                Select a Service
+              </option>
+              <option value="Haircut">Haircut</option>
+              <option value="Massage">Massage</option>
+              <option value="Consultation">Consultation</option>
+              <option value="Facial">Facial</option>
+              <option value="Manicure">Manicure</option>
+            </select>
+          </div>
+
+          <div className="mb-4">
+            <label className="block text-gray-700 font-medium mb-2">
+              Appointment Date
+            </label>
+            <input
+              type="date"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+              className="w-full border-2 border-black px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
+              required
+            />
+          </div>
+
+          <p className="text-gray-600 text-sm mb-6">
+            Once you make a booking, you will receive a pop up message from our
+            website.
+          </p>
+
+          <button
+            type="submit"
+            className="w-full bg-lime-700 text-white font-medium py-2 rounded-md hover:bg-lime-600"
           >
-            Appointment for
-          </label>
-          <input
-            type="text" // Or a date picker library for better UX
-            id="appointmentDate"
-            name="appointmentDate"
-            value={formData.appointmentDate}
-            onChange={handleChange}
-            className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            readOnly // Make it readonly, integrate a datepicker library for selection
-          />
-        </div>
-        <p className="text-sm text-gray-600 mb-4">
-          Once you make a booking you will receive an email from our team.
-        </p>
-        <button
-          type="submit"
-          className="w-full bg-green-500 hover:bg-green-600 text-white font-medium py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-green-300"
-        >
-          Submit
-        </button>
-      </form>
+            Submit
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

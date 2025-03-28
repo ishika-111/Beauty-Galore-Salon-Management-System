@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "service": "Hair Color"
+  },
+  {
+    "id": 2,
+    "service": "Lashes Extension"
+  },
+  {
+    "id": 3,
+    "service": "Nail Extension"
+  },
+  {
+    "id": 4,
+    "service": "Nail Shaping"
+  },
+  {
+    "id": 5,
+    "service": "Party Makeup"
+  },
+  {
+    "id": 6,
+    "service": "Bridal Makeup"
+  },
+  {
+    "id": 7,
+    "service": "Waxing"
+  },
+  {
+    "id": 8,
+    "service": "Massage & Facial"
+  },
+  {
+    "id": 9,
+    "service": "Threading"
+  },
+  {
+    "id": 10,
+    "service": "NailArt"
+  },
+  {
+    "id": 11,
+    "service": "Normal Makeup"
+  },
+  {
+    "id": 12,
+    "service": "Manicure&Pedicure"
+  }
+]
