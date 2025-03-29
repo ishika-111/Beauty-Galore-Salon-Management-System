@@ -8,6 +8,8 @@ import authenticateUser from "./Middleware/authMiddleware.js"; // Import your au
 import adminRouter from "./routes/adminRoutes.js";
 import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcrypt";
+import cartRouter from "./routes/cartRoutes.js";
+import profileRouter from "./routes/profileRoutes.js";
 
 dotenv.config();
 const app = express();
@@ -31,6 +33,8 @@ app.use("/api/users", userRouter);
 
 app.use("/api/appointment", appointmentRouter);
 app.use("/api/admin", adminRouter);
+app.use("/api/cart", cartRouter);
+app.use("/api/customer", profileRouter);
 
 const createDefaultAdmin = async () => {
   try {

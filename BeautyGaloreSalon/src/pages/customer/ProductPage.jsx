@@ -1,8 +1,9 @@
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import Cookies from "js-cookie";
+import toast from "react-hot-toast";
 
 export default function ProductPage() {
-  const [cart, setCart] = useState([]);
   const [productItems, setProductItems] = useState([]);
   const [error, setError] = useState("");
 
@@ -22,8 +23,31 @@ export default function ProductPage() {
     }
   };
 
-  const addToCart = (product) => {
-    setCart([...cart, product]);
+  const addToCart = async (productId) => {
+    try {
+      const token = Cookies.get("token");
+      if (!token) {
+        toast.error("You must be logged in to add items to the cart.");
+        return;
+      }
+
+      const response = await axios.post(
+        "http://localhost:5000/api/cart/add",
+        { productId, quantity: 1 },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        }
+      );
+
+      toast.success("Item added to cart!");
+    } catch (error) {
+      console.error("Error adding to cart:", error.response?.data || error);
+      toast.error(error.response?.data?.error || "Failed to add item to cart");
+    }
   };
 
   return (
@@ -44,7 +68,7 @@ export default function ProductPage() {
             <p className="text-xl font-bold mt-2">{item.price}</p>
             <button
               className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700"
-              onClick={() => addToCart(product)}
+              onClick={() => addToCart(item.id)}
             >
               Add to Cart
             </button>

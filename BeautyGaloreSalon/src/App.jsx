@@ -15,6 +15,8 @@ import EmailVerifyPage from "./pages/EmailVerifyPage";
 import CustomerRegisterForm from "./components/CustomerRegisterForm";
 import ResetPasswordPage from "./pages/ResetPasswordPage";
 import ForgotPasswordPage from "./pages/ForgotPasswordPage";
+import Profile from "./pages/customer/Profile";
+import CartPage from "./pages/customer/CartPage.jsx";
 
 export default function App() {
   return (
@@ -33,6 +35,8 @@ export default function App() {
           <Route path="/customer/register" element={<CustomerRegisterForm />} />
           <Route path="/verify-email/:token" element={<EmailVerifyPage />} />
           <Route path="/products" element={<ProductPage />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/cart" element={<CartPage />} />
           <Route
             path="/reset-password/:token"
             element={<ResetPasswordPage />}

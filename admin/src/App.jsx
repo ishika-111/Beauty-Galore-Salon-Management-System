@@ -7,15 +7,17 @@ import DashboardLayout from "../layout/DashboardLayout";
 
 export default function App() {
   return (
-    <DashboardLayout>
-      <Routes>
-        <Route path="/" element={<Navigate to="/login" />} />{" "}
-        {/* Redirect to /login */}
-        <Route path="/login" element={<Login />} />
+    <Routes>
+      {/* Redirect to /login */}
+      <Route path="/" element={<Navigate to="/login" />} />
+      <Route path="/login" element={<Login />} />
+
+      {/* Dashboard Layout */}
+      <Route element={<DashboardLayout />}>
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/add/product" element={<AddProduct />} />
         <Route path="/product/list" element={<ProductList />} />
-      </Routes>
-    </DashboardLayout>
+      </Route>
+    </Routes>
   );
 }

@@ -108,8 +108,8 @@ const ProductList = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-5xl">
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 ml-40">
+      <div className="bg-white p-9 rounded-lg shadow-md w-full max-w-5xl">
         <h1 className="text-2xl font-bold mb-6 text-center">Product Items</h1>
 
         {error && <p className="text-red-500 mb-4">{error}</p>}
