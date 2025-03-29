@@ -60,22 +60,22 @@ model Appointment {
 }
 
 
-
 model Product {
-  id          Int     @id @default(autoincrement())
-  title       String
-  description String
-  image       String?
-  author      User    @relation(fields: [authorId], references: [id])
-  authorId    Int
-  orders      Order[]
+  id            String        @id @default(uuid())
+  name          String
+  description   String?
+  price         Float
+  available     Boolean       @default(true)
+  imageUrl      String?
+  users         User[]        // Add this field to define the inverse relation from Menu to User
 }
+
 
 model Order {
   id        Int     @id @default(autoincrement())
   user      User    @relation(fields: [userId], references: [id])
   userId    Int
-  product   Product @relation(fields: [productId], references: [id])
+  
   productId Int
   total     Float
   status    String?

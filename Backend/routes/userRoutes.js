@@ -10,6 +10,7 @@ import {
   sendResetPasswordEmail,
   resetPassword,
 } from "../controller/userController.js";
+import { getProductItems } from "../controller/productController.js";
 
 const userRouter = express.Router();
 
@@ -20,7 +21,6 @@ userRouter.post("/forgot-password", sendResetPasswordEmail);
 userRouter.post("/reset-password/:token", resetPassword);
 userRouter.post("/staff/login", staffLogin);
 userRouter.post("/staff/register", staffRegister);
-userRouter.post("/admin/login", adminLogin);
-userRouter.post("/admin/register", adminRegister);
+userRouter.get("/products", getProductItems);
 
 export default userRouter;
