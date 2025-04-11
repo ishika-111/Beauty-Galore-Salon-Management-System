@@ -4,6 +4,7 @@ import Dashboard from "./pages/Dashboard";
 import AddProduct from "./components/AddProduct";
 import ProductList from "./components/ProductList";
 import DashboardLayout from "../layout/DashboardLayout";
+import OrderList from "./components/Orderlist";
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/add/product" element={<AddProduct />} />
         <Route path="/product/list" element={<ProductList />} />
+        <Route path="/orders" element={<OrderList />} />
       </Route>
     </Routes>
   );

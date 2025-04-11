@@ -1,8 +1,17 @@
 import { Link } from "react-router-dom";
 import Bgvideo from "../assets/VideoBG.mp4";
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import services from "../data/service.json";
+
+import { FaArrowRight } from "react-icons/fa";
 import ServiceCard from "./ServiceCard";
 
 export default function Hero() {
+  const navigate = useNavigate();
+
+  // Display first 4 services
+  const featuredServices = services.slice(0, 4);
   return (
     <div>
       <div className="relative">
@@ -54,11 +63,30 @@ export default function Hero() {
         </div>
       </div>
       <div>
-        <h2 className="text-3xl text-center font-semibold animate-bounce text-black">
-          Our Services
-        </h2>
-        <div className="flex justify-evenly ">
-          <ServiceCard limit={4} />
+        <div className="max-w-7xl mx-auto px-6 py-12">
+          <h2 className="text-4xl font-bold text-center text-lime-700 mb-12 animate-bounce">
+            Featured Salon Services
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-10">
+            {featuredServices.map((service) => (
+              <ServiceCard
+                key={service.id}
+                image={service.image}
+                title={service.name}
+                onLearnMore={() => navigate(`/services/${service.id}`)}
+              />
+            ))}
+          </div>
+
+          {/* Explore button to navigate to ServicePage */}
+          <div className="text-center mt-8">
+            <button
+              onClick={() => navigate("/services")}
+              className="bg-lime-700 text-white px-6 py-3 rounded-full font-semibold hover:bg-lime-600 transition"
+            >
+              Explore All Services
+            </button>
+          </div>
         </div>
       </div>
     </div>

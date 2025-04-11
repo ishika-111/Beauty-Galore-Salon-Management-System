@@ -66,8 +66,8 @@ const AddProduct = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100 ml-80">
-      <div className="bg-white p-10 rounded-lg shadow-xl w-full max-w-lg">
+    <div className="h-full flex items-center justify-center">
+      <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-xl">
         <h1 className="text-3xl font-bold text-center text-gray-800 mb-6">
           Add Product Item
         </h1>
@@ -79,7 +79,7 @@ const AddProduct = () => {
 
         <form onSubmit={handleCreateProductItem} className="space-y-5">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium text-gray-700 ">
               Name
             </label>
             <input
@@ -136,7 +136,7 @@ const AddProduct = () => {
 
           <button
             type="submit"
-            className="w-full bg-lime-700 text-white py-3 px-4 rounded-md text-lg font-medium transition-all hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+            className="w-full bg-lime-700 text-white py-3 px-4 rounded-md text-lg font-medium transition-all hover:bg-lime-600 focus:outline-none focus:ring-2 focus:ring-lime-500 focus:ring-offset-2"
           >
             Add Product Item
           </button>

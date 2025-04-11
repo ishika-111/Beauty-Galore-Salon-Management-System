@@ -16,14 +16,16 @@ import CustomerRegisterForm from "./components/CustomerRegisterForm";
 import ResetPasswordPage from "./pages/ResetPasswordPage";
 import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 import Profile from "./pages/customer/Profile";
-import CartPage from "./pages/customer/CartPage.jsx";
+import CartPage from "./pages/cart/CartPage";
+import MainLayout from "./layout/MainLayout";
+import ServiceDetails from "./pages/customer/ServiceDetails";
 
 export default function App() {
   return (
     <>
       <Toaster position="top-center" reverseOrder={false} />
       <Routes>
-        <Route path="/" element={<CustomerLayout />}>
+        <Route path="/" element={<MainLayout />}>
           <Route index element={<HomePage />} />
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/login" element={<LoginPage />} />
@@ -31,21 +33,25 @@ export default function App() {
           <Route path="/services" element={<ServicePage />} />
           <Route path="/aboutus" element={<AboutUsPage />} />
           <Route path="/book" element={<BookNowPage />} />
-          <Route path="/customer/home" element={<HomePage />} />
           <Route path="/customer/register" element={<CustomerRegisterForm />} />
           <Route path="/verify-email/:token" element={<EmailVerifyPage />} />
           <Route path="/products" element={<ProductPage />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/cart" element={<CartPage />} />
+          <Route path="/services/:id" element={<ServiceDetails />} />
           <Route
             path="/reset-password/:token"
             element={<ResetPasswordPage />}
           />
           <Route path="/forget" element={<ForgotPasswordPage />} />
         </Route>
-        <Route path="/staff" element={<StaffLayout />}>
-          <Route index element={<StaffHomePage />} />
-          <Route path="/staff/home" element={<StaffHomePage />} />
+        <Route path="/customer" element={<CustomerLayout />}>
+          <Route index element={<HomePage />} />
+          <Route path="/customer/courses" element={<CoursePage />} />
+          <Route path="/customer/profile" element={<Profile />} />
+          <Route path="/customer/services" element={<ServicePage />} />
+          <Route path="/customer/aboutus" element={<AboutUsPage />} />
+          <Route path="/customer/book" element={<BookNowPage />} />
+          <Route path="/customer/products" element={<ProductPage />} />
+          <Route path="/customer/cart" element={<CartPage />} />
         </Route>
       </Routes>
     </>

@@ -1,50 +1,38 @@
 [
   {
-    "id": 1,
-    "service": "Hair Color"
+    "id": "1",
+    "name": "Hair Styling (Ladies)",
+    "description": "Experience the ultimate hair transformation with our expert haircut and styling services. Our professional stylists tailor each cut to enhance your natural features and personal style. Whether you're after a bold new look or just a quick trim, we ensure precision cutting, expert advice, and flawless finishing using salon-quality products.",
+    "image": "https://images.pexels.com/photos/3331486/pexels-photo-3331486.jpeg?auto=compress&cs=tinysrgb&w=600"
   },
   {
-    "id": 2,
-    "service": "Lashes Extension"
+    "id": "2",
+    "name": "Facial & Skincare",
+    "description": "Rejuvenate your skin with our luxurious facial treatments. Designed for all skin types, our facials cleanse, exfoliate, and nourish your skin to give you a glowing complexion. We use premium skincare products to ensure hydration, anti-aging benefits, and a smooth, refreshed feel after every session.",
+    "image": "https://images.pexels.com/photos/6663368/pexels-photo-6663368.jpeg?auto=compress&cs=tinysrgb&w=600"
   },
   {
-    "id": 3,
-    "service": "Nail Extension"
+    "id": "3",
+    "name": "Manicure & Pedicure",
+    "description": "Treat your hands and feet to our relaxing manicure and pedicure services. From cuticle care and nail shaping to exfoliation and massage, we ensure a clean and pampering experience. Choose from a wide range of colors and finishes for nails that are as polished as you are.",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXBGZAg9GG4y3A4gaOyTYRIajfLsHotd4vDA&s"
   },
   {
-    "id": 4,
-    "service": "Nail Shaping"
+    "id": "4",
+    "name": "Hair Coloring",
+    "description": "Add vibrancy to your hair with our professional coloring services. From subtle highlights to full-color transformations, our stylists use top-tier products to ensure long-lasting results with minimal damage. Consult with our experts to find the perfect shade for your skin tone and style.",
+    "image": "https://images.pexels.com/photos/4123782/pexels-photo-4123782.jpeg?auto=compress&cs=tinysrgb&w=600"
   },
   {
-    "id": 5,
-    "service": "Party Makeup"
+    "id": "5",
+    "name": "Bridal Makeup & Styling",
+    "description": "Look flawless on your big day with our premium bridal makeup and styling services. We create customized looks to suit your outfit, skin tone, and wedding theme. Our experienced artists ensure you look radiant, confident, and photo-ready from the aisle to the afterparty.",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_lHOrGaHJhqwB2F8W1KjjO2HIqRz2RZ1WCA&s"
   },
   {
-    "id": 6,
-    "service": "Bridal Makeup"
-  },
-  {
-    "id": 7,
-    "service": "Waxing"
-  },
-  {
-    "id": 8,
-    "service": "Massage & Facial"
-  },
-  {
-    "id": 9,
-    "service": "Threading"
-  },
-  {
-    "id": 10,
-    "service": "NailArt"
-  },
-  {
-    "id": 11,
-    "service": "Normal Makeup"
-  },
-  {
-    "id": 12,
-    "service": "Manicure&Pedicure"
+    "id": "6",
+    "name": "Lash Extension",
+    "description": "Relax and unwind with our body spa and massage therapies. Our treatments combine traditional techniques with aromatherapy to relieve tension, boost circulation, and restore balance to your body and mind. A perfect escape from the stresses of everyday life.",
+    "image": "https://i.pinimg.com/474x/35/f6/63/35f663fbf94526980be2486f67723c58.jpg"
   }
 ]

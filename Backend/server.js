@@ -10,6 +10,7 @@ import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcrypt";
 import cartRouter from "./routes/cartRoutes.js";
 import profileRouter from "./routes/profileRoutes.js";
+import orderRouter from "./routes/orderRoute.js";
 
 dotenv.config();
 const app = express();
@@ -32,9 +33,10 @@ app.get("/", (req, res) => {
 app.use("/api/users", userRouter);
 
 app.use("/api/appointment", appointmentRouter);
-app.use("/api/admin", adminRouter);
+app.use("/api/admin", adminRouter, orderRouter);
 app.use("/api/cart", cartRouter);
 app.use("/api/customer", profileRouter);
+app.use("/api/orders", orderRouter);
 
 const createDefaultAdmin = async () => {
   try {

@@ -260,7 +260,7 @@ const ProductList = () => {
 
               <button
                 type="submit"
-                className="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700"
+                className="w-full bg-lime-700 text-white py-2 px-4 rounded-md hover:bg-lime-600"
               >
                 Update Produt Item
               </button>

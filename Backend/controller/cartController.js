@@ -3,14 +3,17 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 /**
- * Add to Cart
+ * Add item to cart
  */
 export const addToCart = async (req, res) => {
   const { productId, quantity } = req.body;
   const userId = req.user?.id;
 
-  if (!userId) {
-    return res.status(401).json({ error: "Unauthorized: User not logged in" });
+  if (!productId || quantity < 1) {
+    return res.status(400).json({
+      error:
+        "Invalid input: productId and quantity must be provided and quantity must be at least 1",
+    });
   }
 
   try {
@@ -25,17 +28,50 @@ export const addToCart = async (req, res) => {
 
     // Add or update cart item
     const cartItem = await prisma.cart.upsert({
-      where: { userId_productId: { userId, productId } },
+      where: { userId_productId: { userId, productId } }, // Composite key
       update: { quantity: { increment: quantity } },
       create: { userId, productId, quantity },
     });
 
-    res.status(200).json(cartItem);
+    res.json(cartItem);
   } catch (error) {
     console.error("Error adding to cart:", error);
-    res
-      .status(500)
-      .json({ error: "Internal Server Error", details: error.message });
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+/**
+ * Update item in cart
+ */
+export const updateCartItem = async (req, res) => {
+  const { cartItemId } = req.params;
+  const { quantity } = req.body;
+  const userId = req.user?.id;
+
+  if (quantity < 1) {
+    return res.status(400).json({ error: "Quantity must be at least 1" });
+  }
+
+  try {
+    // Find the cart item
+    const cartItem = await prisma.cart.findUnique({
+      where: { id: parseInt(cartItemId) },
+    });
+
+    if (!cartItem || cartItem.userId !== userId) {
+      return res.status(404).json({ error: "Cart item not found" });
+    }
+
+    // Update the quantity
+    const updatedCartItem = await prisma.cart.update({
+      where: { id: parseInt(cartItemId) },
+      data: { quantity },
+    });
+
+    res.json(updatedCartItem);
+  } catch (error) {
+    console.error("Error updating cart item:", error);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 };
 
@@ -45,22 +81,20 @@ export const addToCart = async (req, res) => {
 export const getCart = async (req, res) => {
   const userId = req.user?.id;
 
-  if (!userId) {
-    return res.status(401).json({ error: "Unauthorized: User not logged in" });
-  }
-
   try {
     const cart = await prisma.cart.findMany({
       where: { userId },
-      include: { product: true }, // Ensures cart includes product details
+      include: { product: true }, // Fetch product details
     });
 
-    res.status(200).json(cart);
+    if (cart.length === 0) {
+      return res.status(404).json({ message: "Your cart is empty" });
+    }
+
+    res.json(cart);
   } catch (error) {
     console.error("Error fetching cart:", error);
-    res
-      .status(500)
-      .json({ error: "Internal Server Error", details: error.message });
+    res.status(500).json({ error: "Internal Server Error" });
   }
 };
 
@@ -70,10 +104,6 @@ export const getCart = async (req, res) => {
 export const removeFromCart = async (req, res) => {
   const { cartItemId } = req.params;
   const userId = req.user?.id;
-
-  if (!userId) {
-    return res.status(401).json({ error: "Unauthorized: User not logged in" });
-  }
 
   try {
     // Find cart item

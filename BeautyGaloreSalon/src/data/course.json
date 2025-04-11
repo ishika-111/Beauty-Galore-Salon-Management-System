@@ -1,0 +1,94 @@
+{
+  "courses": [
+    {
+      "id": "S001",
+      "image": "https://www.salongold.co.uk/wp-content/uploads/2016/08/hairdresser-insurance.jpg",
+      "title": "Hairdressing Basics",
+      "details": {
+        "learning_outcomes": [
+          "Understand basic hair cutting techniques.",
+          "Learn how to style hair using different tools.",
+          "Master the art of blow-drying and basic hairstyling."
+        ],
+        "duration": "6 weeks",
+        "certificate": "Certificate of Completion in Hairdressing Basics",
+        "prerequisites": "None"
+      }
+    },
+    {
+      "id": "S002",
+      "image": "https://images.pexels.com/photos/3422099/pexels-photo-3422099.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "title": "Nail Art and Design",
+      "details": {
+        "learning_outcomes": [
+          "Learn basic nail care and maintenance.",
+          "Understand how to design and create nail art.",
+          "Familiarize with advanced nail techniques like ombre and 3D designs."
+        ],
+        "duration": "8 weeks",
+        "certificate": "Certificate of Completion in Nail Art and Design",
+        "prerequisites": "Basic knowledge of nail care"
+      }
+    },
+    {
+      "id": "S003",
+      "image": "https://images.pexels.com/photos/2799609/pexels-photo-2799609.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "title": "Spa and Wellness Therapy",
+      "details": {
+        "learning_outcomes": [
+          "Learn various massage techniques and their therapeutic benefits.",
+          "Understand different skin care treatments and facials.",
+          "Gain knowledge in aromatherapy and relaxation techniques."
+        ],
+        "duration": "10 weeks",
+        "certificate": "Certificate of Completion in Spa and Wellness Therapy",
+        "prerequisites": "None"
+      }
+    },
+    {
+      "id": "S004",
+      "image": "https://images.pexels.com/photos/247287/pexels-photo-247287.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "title": "Makeup Artistry",
+      "details": {
+        "learning_outcomes": [
+          "Master basic makeup techniques for everyday looks.",
+          "Learn how to create professional evening and bridal makeup.",
+          "Understand color theory and makeup products."
+        ],
+        "duration": "6 weeks",
+        "certificate": "Certificate of Completion in Makeup Artistry",
+        "prerequisites": "None"
+      }
+    },
+    {
+      "id": "S005",
+      "image": "https://images.pexels.com/photos/1242349/pexels-photo-1242349.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "title": "Hair Coloring Techniques",
+      "details": {
+        "learning_outcomes": [
+          "Understand color theory and how to choose hair color.",
+          "Learn various hair coloring techniques (e.g., balayage, ombré, highlights).",
+          "Practice hair coloring on real clients and mannequins."
+        ],
+        "duration": "8 weeks",
+        "certificate": "Certificate of Completion in Hair Coloring Techniques",
+        "prerequisites": "Basic hairdressing knowledge"
+      }
+    },
+    {
+      "id": "S006",
+      "image": "https://images.pexels.com/photos/4586708/pexels-photo-4586708.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "title": "Advanced Skin Care Treatments",
+      "details": {
+        "learning_outcomes": [
+          "Learn how to perform advanced facials and skin treatments.",
+          "Understand the science behind different skin care products.",
+          "Master techniques for treating various skin conditions."
+        ],
+        "duration": "12 weeks",
+        "certificate": "Certificate of Completion in Advanced Skin Care Treatments",
+        "prerequisites": "Basic knowledge of skincare"
+      }
+    }
+  ]
+}
