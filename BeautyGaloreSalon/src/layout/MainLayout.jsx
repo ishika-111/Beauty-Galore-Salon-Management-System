@@ -6,7 +6,9 @@ export default function MainLayout() {
   return (
     <div data-theme="lemonade">
       <NavBar />
-      <Outlet />
+      <div className="border-t border-gray-300">
+        <Outlet />
+      </div>
       <Footer />
     </div>
   );

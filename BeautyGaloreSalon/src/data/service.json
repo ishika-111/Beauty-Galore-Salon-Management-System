@@ -1,38 +1,509 @@
 [
   {
-    "id": "1",
-    "name": "Hair Styling (Ladies)",
+    "id": "Hair-Services",
+    "name": "Hair Services (Ladies)",
     "description": "Experience the ultimate hair transformation with our expert haircut and styling services. Our professional stylists tailor each cut to enhance your natural features and personal style. Whether you're after a bold new look or just a quick trim, we ensure precision cutting, expert advice, and flawless finishing using salon-quality products.",
-    "image": "https://images.pexels.com/photos/3331486/pexels-photo-3331486.jpeg?auto=compress&cs=tinysrgb&w=600"
+    "image": "https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "types": [
+      {
+        "name": "Haircut",
+        "image": "https://cdn.pixabay.com/photo/2015/07/07/11/36/haircut-834280_1280.jpg",
+        "description": "We offer traditional haircuts such as bobs, pixie cuts, long layers, and more for a classic look, and trendy styles like the Butterfly Cut, The Wolf Cut, and Modern Mullet."
+      },
+      {
+        "name": "Hair Straightening",
+        "image": "https://www.ayodyamanatunga.com/wp-content/uploads/2020/12/istockphoto-487379856-612x612-1.jpg",
+        "description": "Achieve smooth, sleek, and straight hair with our professional hair straightening services, including keratin treatments and flat ironing."
+      },
+      {
+        "name": "Keratin Treatment",
+        "image": "https://media.post.rvohealth.io/wp-content/uploads/2021/12/keratin-treatment-732x549-thumbnail.jpg",
+        "description": "A solution for curly, frizzy, or damaged hair, offering smooth, frizz-free, nourished, and strong hair with our top-quality keratin treatments."
+      },
+
+      {
+        "name": "Hair Treatment",
+        "image": "https://fatoradrive.blob.core.windows.net/itm/qlo003192024-U54UQ.jpg",
+        "description": "A variety of hair treatments, including deep conditioning, oil treatments, and Brazilian blowouts, customized to keep your hair healthy and beautiful."
+      }
+    ],
+    "faq": [
+      {
+        "question": "How long does a hair appointment usually take?",
+        "answer": "Hair appointment duration usually depends on the length and thickness of your hair, the expertise techniques applied, and the service you get. On average, a hair color/perm takes more than an hour, a haircut takes less than half an hour, and hair straightening takes around 4 to 6 hours."
+      },
+      {
+        "question": "What is a keratin treatment and how does it work?",
+        "answer": "A keratin treatment smoothens and adds shine to frizzy hair by infusing it with keratin protein. It helps reduce frizz and makes hair more manageable."
+      },
+      {
+        "question": "Can I color my hair after getting it straightened?",
+        "answer": "In general, it is suggested not to color your hair prior 6 months before straightening. If you want to color your hair anyhow and have some sort of emergency, you should consult with your hairstylist so that you can achieve your hair results without damaging and compromising the health of your hair."
+      },
+      {
+        "question": "How long does a keratin treatment typically last?",
+        "answer": "A keratin treatment can last anywhere from 2 to 6 months depending on your hair type, aftercare routine, and products used."
+      },
+      {
+        "question": "Can oil massage help with hair growth?",
+        "answer": "Yes, regular oil massages improve blood circulation to the scalp, nourish the roots, and can promote healthier hair growth."
+      }
+    ]
   },
   {
-    "id": "2",
+    "id": "Hair-Services-Gents",
+    "name": "Hair Services (Gents)",
+    "description": "At Blonde Me Salon, we offer a wide range of premium services designed to cater to men's grooming needs. From haircuts and beard trims to hair color and spa treatments, our expert stylists and barbers ensure you get the best care with high-quality products and techniques.",
+    "image": "https://media.istockphoto.com/id/640274128/photo/barber-using-scissors-and-comb.jpg?s=612x612&w=0&k=20&c=mjdP6NhDA40WBorr8kyyI69waMs1EyzLkSmT6lQRvGU=",
+    "types": [
+      {
+        "name": "Haircut and Set",
+        "image": "https://images.unsplash.com/photo-1666622833860-562f3a5caa59?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "description": "Our experienced barbers will work with you to achieve the perfect style, whether it's a buzz cut, crew cut, mullet, undercut, or any other trendy or classic look you desire."
+      },
+      {
+        "name": "Beard Trimming",
+        "image": "https://images.unsplash.com/photo-1533808232502-bee53575c3af?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "description": "We offer a range of beard trimming styles, from a clean and sharp look to a more natural and rugged finish. Our expert barbers use scissors, clippers, and razors to achieve your desired result."
+      },
+      {
+        "name": "Hair Spa",
+        "image": "https://limelitesalonandspa.com/wp-content/uploads/2023/05/image-7.png",
+        "description": "Our hair spa services are designed to nourish and rejuvenate your hair and scalp, leaving them feeling refreshed and healthy. We use high-quality products tailored to your hair type for optimal results."
+      },
+      {
+        "name": "Highlight & Coloring",
+        "image": "https://i.pinimg.com/474x/69/13/3c/69133c4a3dc653e659c16e0a63065b25.jpg",
+        "description": "From full-color treatments to highlights and balayage, our colorists use high-quality products to add dimension and vibrancy to your hair. Whether you're covering grays or experimenting with a new look, we've got you covered."
+      },
+      {
+        "name": "Hair Perm",
+        "image": "https://i.shgcdn.com/4f9b0b10-467b-4f8e-9481-5ae829d96002/-/format/auto/-/preview/3000x3000/-/quality/lighter/",
+        "description": "Our hair perm service adds curls or waves to your hair for a natural and voluminous look. We use gentle techniques to ensure your hair remains healthy and well-cared for."
+      }
+    ],
+    "faq": [
+      {
+        "question": "How do I prevent and manage hair loss?",
+        "answer": "Maintain a proper hair and scalp-care routine, avoid harsh chemicals, manage stress, and consider multivitamin supplements for hair health."
+      },
+      {
+        "question": "How can I select the best hairstyle for me?",
+        "answer": "Consult with your stylist to discuss your preferences, face shape, and lifestyle to choose a style that best suits you."
+      },
+      {
+        "question": "What is the current popular hairstyle trend?",
+        "answer": "Popular trends include fades, undercuts, quiffs, and textured styles. Your stylist can help you choose a trendy look that complements your personal style."
+      },
+      {
+        "question": "How often should I get my hair cut or styled?",
+        "answer": "It depends on your hair growth rate and style. Generally, every 4-6 weeks for haircuts and trimming to maintain your look."
+      },
+      {
+        "question": "Is getting gent's hair services costly?",
+        "answer": "Prices vary depending on the service, but we offer competitive rates for high-quality styling and grooming."
+      }
+    ]
+  },
+
+  {
+    "id": "Facial-Skincare",
     "name": "Facial & Skincare",
     "description": "Rejuvenate your skin with our luxurious facial treatments. Designed for all skin types, our facials cleanse, exfoliate, and nourish your skin to give you a glowing complexion. We use premium skincare products to ensure hydration, anti-aging benefits, and a smooth, refreshed feel after every session.",
-    "image": "https://images.pexels.com/photos/6663368/pexels-photo-6663368.jpeg?auto=compress&cs=tinysrgb&w=600"
+    "image": "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZmFjaWFsfGVufDB8fDB8fHww",
+    "types": [
+      {
+        "name": "Classic Facial",
+        "image": "https://plus.unsplash.com/premium_photo-1661645623435-41d9869758d9?q=80&w=1928&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "description": "A gentle cleanse and exfoliation for everyday skincare maintenance."
+      },
+      {
+        "name": "Hydrating Facial",
+        "image": "https://pureandsimple.ca/cdn/shop/products/Pure_Simple-Super-Hydrating-Facial-1000px.jpg?v=1600444895",
+        "description": "Replenishes moisture for dry, dehydrated skin with nourishing ingredients."
+      },
+      {
+        "name": "Anti-Aging Facial",
+        "image": "https://cdn.spafinder.com/2016/10/anti-aging-facial.jpg",
+        "description": "Targets fine lines and wrinkles, boosting collagen production."
+      },
+      {
+        "name": "Acne Treatment Facial",
+        "image": "https://allure-derm.com/storage/2024/04/Acne-Treatment-by-Allure-Dermatology-in-Edinburg-TX.webp",
+        "description": "Deep cleansing and healing to reduce breakouts and acne scars."
+      },
+      {
+        "name": "Glow Facial",
+        "image": "https://aromamagic.com/cdn/shop/articles/Right_Way_to_Use_Skin_Glow_Facial_Kit.jpg?v=1655097819",
+        "description": "Brightens dull skin and gives you a radiant, fresh glow."
+      }
+    ],
+    "faq": [
+      {
+        "question": "What are the benefits of getting a facial and massage?",
+        "answer": "There are many benefits of getting facials and massages. Facials help to improve the appearance of the skin, promote relaxation, and reduce hyperpigmentation. It also deals with acne scars and aging. Massage helps to promote relaxation, improve blood circulation, and enhance overall well-being."
+      },
+      {
+        "question": "When do facial results start showing?",
+        "answer": "Facial results may start to show immediately after the session, with more noticeable improvements in skin texture and glow within a few days, depending on the type of facial."
+      },
+      {
+        "question": "How long time does a facial or massage session take?",
+        "answer": "A typical facial or massage session takes about 60 to 90 minutes, but it can vary based on the type of treatment chosen."
+      },
+      {
+        "question": "How do I select the best facial and massage for me?",
+        "answer": "You can select the best facial and massage by considering your skin type, personal goals, and any existing skin concerns. A consultation with a professional can help you choose the most suitable treatment."
+      },
+      {
+        "question": "Are there any side effects after getting a facial or massage?",
+        "answer": "Some people may experience slight redness, sensitivity, or breakouts after a facial, which usually subsides within a day or two. Massages may sometimes lead to temporary soreness, especially if it was a deep tissue massage."
+      }
+    ]
   },
   {
-    "id": "3",
+    "id": "Manicure-Pedicure",
     "name": "Manicure & Pedicure",
     "description": "Treat your hands and feet to our relaxing manicure and pedicure services. From cuticle care and nail shaping to exfoliation and massage, we ensure a clean and pampering experience. Choose from a wide range of colors and finishes for nails that are as polished as you are.",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXBGZAg9GG4y3A4gaOyTYRIajfLsHotd4vDA&s"
+    "image": "https://plus.unsplash.com/premium_photo-1680348266597-6d89a08d12d7?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "types": [
+      {
+        "name": "Pedicure",
+        "image": "https://plus.unsplash.com/premium_photo-1661868958612-7d52c5fb9647?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "description": "Our basic pedicure includes a warm foot soak, nail shaping, cuticle care, moisturizing the skin, and a soothing foot massage. We use high-quality products to ensure the best care for your feet. Additional polish colors and scents are available to choose from."
+      },
+      {
+        "name": "Manicure",
+        "image": "https://images.unsplash.com/photo-1632345031435-8727f6897d53?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "description": "Our basic manicure includes a hand soak, nail shaping, cuticle care, and a relaxing hand massage. We use only the best products to care for your hands. You can choose from a wide variety of polish colors and scents, from neutral shades to bold and vibrant options."
+      }
+    ],
+    "faq": [
+      {
+        "question": "What are the benefits of getting a manicure and pedicure?",
+        "answer": "Manicures and pedicures help improve the health and appearance of your hands and feet. They promote healthy blood circulation and leave your skin feeling refreshed and pampered."
+      },
+      {
+        "question": "How much time do a manicure and pedicure take?",
+        "answer": "A typical session takes 30 to 60 minutes depending on the type of service."
+      },
+      {
+        "question": "What is the difference between regular and gel manicure/pedicure?",
+        "answer": "A regular manicure/pedicure includes trimming, and polishing nails with a regular nail polish and takes slightly more time to dry than a gel manicure/pedicure while a gel manicure/pedicure includes applying gel polish under UV/LED light."
+      },
+      {
+        "question": "Are manicures and pedicures safe for people with sensitive skin?",
+        "answer": "Yes, but be sure to inform the technician so they can use gentle, hypoallergenic products."
+      },
+      {
+        "question": "How do I take care of my hands and feet after a manicure/pedicure?",
+        "answer": "Moisturize daily, avoid harsh chemicals, and wear gloves when doing household chores."
+      }
+    ]
   },
   {
-    "id": "4",
+    "id": "Hair-Color",
     "name": "Hair Coloring",
     "description": "Add vibrancy to your hair with our professional coloring services. From subtle highlights to full-color transformations, our stylists use top-tier products to ensure long-lasting results with minimal damage. Consult with our experts to find the perfect shade for your skin tone and style.",
-    "image": "https://images.pexels.com/photos/4123782/pexels-photo-4123782.jpeg?auto=compress&cs=tinysrgb&w=600"
+    "image": "https://images.pexels.com/photos/4123782/pexels-photo-4123782.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "faq": [
+      {
+        "question": "How long will my hair color last?",
+        "answer": "Your hair color span depends on the products and techniques applied by the hairstylist. It also depends on your natural hair type and the way you maintain your hair. On average, hair color typically lasts for about 6-8 weeks."
+      },
+      {
+        "question": "What is the rule in hair coloring?",
+        "answer": "The basic rule in hair coloring is to understand your hair's underlying pigment and choose a color that complements your skin tone. Another key rule is not to drastically lighten hair too quickly, as it can cause damage. Always do a strand test before full application."
+      },
+      {
+        "question": "How can I maintain my hair color and prevent it from fading?",
+        "answer": "To maintain hair color, use color-safe shampoos and conditioners, avoid frequent washing, and limit exposure to sun, chlorine, and heat styling tools. Deep conditioning treatments and cool water rinses can also help preserve color vibrancy."
+      },
+      {
+        "question": "How long does a typical hair coloring session take?",
+        "answer": "A typical hair coloring session can take anywhere from 1.5 to 3 hours depending on the complexity of the color, length and thickness of your hair, and whether you're doing a root touch-up, full color, or highlights."
+      },
+      {
+        "question": "What is the difference between highlights and lowlights?",
+        "answer": "Highlights are lighter strands of hair added to give dimension and brightness, while lowlights are darker strands that add depth and contrast. Highlights typically create a sun-kissed look, while lowlights offer a richer, more natural tone."
+      }
+    ]
   },
   {
-    "id": "5",
+    "id": "Bridal-Makeup",
     "name": "Bridal Makeup & Styling",
     "description": "Look flawless on your big day with our premium bridal makeup and styling services. We create customized looks to suit your outfit, skin tone, and wedding theme. Our experienced artists ensure you look radiant, confident, and photo-ready from the aisle to the afterparty.",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_lHOrGaHJhqwB2F8W1KjjO2HIqRz2RZ1WCA&s"
+    "image": "https://images.unsplash.com/photo-1684868682581-4cac3af5b8d4?q=80&w=1972&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "faq": [
+      {
+        "question": "Is bridal makeup costly?",
+        "answer": "Bridal makeup is often found to be costly as compared to other types of makeup as it includes makeup done by highly skilled makeup artists, high-quality products, and specialized techniques."
+      },
+      {
+        "question": "How long time does bridal makeup usually take?",
+        "answer": "Bridal makeup typically takes about 1.5 to 3 hours. This includes skin prep, makeup application, hair styling, and touch-ups to ensure a flawless look that lasts all day."
+      },
+      {
+        "question": "How soon should I book my bridal makeup?",
+        "answer": "It's recommended to book your bridal makeup at least 3 to 6 months in advance, especially during peak wedding seasons. This ensures you get your preferred artist and allows time for trials and consultations."
+      },
+      {
+        "question": "What should I do to prepare for my bridal makeup session?",
+        "answer": "To prepare, maintain a consistent skincare routine, stay hydrated, and avoid trying new products right before the wedding. Also, have a bridal trial session to finalize your look and share references with your artist."
+      },
+      {
+        "question": "What are the current popular bridal makeup trends?",
+        "answer": "Popular trends include dewy skin, soft glam eyes, nude lips, natural brows, and subtle highlighter. Many brides also opt for airbrush makeup for a flawless, long-lasting finish."
+      }
+    ]
   },
   {
-    "id": "6",
+    "id": "Lash-Extension",
     "name": "Lash Extension",
     "description": "Relax and unwind with our body spa and massage therapies. Our treatments combine traditional techniques with aromatherapy to relieve tension, boost circulation, and restore balance to your body and mind. A perfect escape from the stresses of everyday life.",
-    "image": "https://i.pinimg.com/474x/35/f6/63/35f663fbf94526980be2486f67723c58.jpg"
+    "image": "https://plus.unsplash.com/premium_photo-1661504724426-d290a5cf8097?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "types": [
+      {
+        "name": "Classic Extensions",
+        "image": "https://charmlash.com/wp-content/uploads/2023/07/122224564_375782766800323_4181425100806826705_n-scaled-1-734x734.jpg.webp",
+        "description": "In classic eyelash extensions, single synthetic lashes are applied and glued to each natural lash, giving volume and length to your natural lashes. This lightweight and natural look is perfect for those new to extensions or looking for a low-maintenance style."
+      },
+      {
+        "name": "Hybrid Extensions",
+        "image": "https://charmlash.com/wp-content/uploads/2023/06/hybrid-lash-extensions-hybrid-full-set-lashes-volume-hybrid-lashes.jpg",
+        "description": "Hybrid extensions are a mix of classic and volume extensions, providing a fuller and more textured look. This technique blends individual lashes with handmade volume fans, offering extra length and thickness for a bold and beautiful appearance."
+      },
+      {
+        "name": "Volume Extensions",
+        "image": "https://cdn.ecommercedns.uk/files/9/246209/0/20165880/img-3804.jpg",
+        "description": "Volume eyelash extensions involve applying multiple lightweight lashes to each natural lash to create a fuller, thicker look. This dramatic technique is ideal for women who want a voluminous and charismatic appearance."
+      },
+      {
+        "name": "Mega-Volume Extensions",
+        "image": "https://stacylash.com/cdn/shop/articles/The_Ultimate_Guide_to_Mega_Volume_Lashes.jpg?v=1706891084",
+        "description": "Mega-volume extensions provide maximum volume with ultra-fine lashes applied to each natural lash. This technique creates an intense, fluffy, and textured look for a stunning, eye-catching effect, perfect for special occasions."
+      }
+    ],
+    "faq": [
+      {
+        "question": "How long do eyelash extensions last?",
+        "answer": "Eyelash extensions typically last for about 4-6 weeks, depending on your natural lash growth cycle and how well you care for them as advised by your technician."
+      },
+      {
+        "question": "How do I look after my eyelash extensions?",
+        "answer": "To maintain your eyelash extensions, avoid getting them wet for the first 24-48 hours, refrain from using oil-based makeup removers, and brush them gently daily with a clean spoolie. Avoid rubbing or pulling on the lashes."
+      },
+      {
+        "question": "How often should I visit the salon for fills and touch-ups after eyelash extensions?",
+        "answer": "It's recommended to visit the salon for a fill every 2-3 weeks to maintain a full look as natural lashes shed and grow out."
+      },
+      {
+        "question": "What type of lashes and glue does your salon use?",
+        "answer": "We use high-quality synthetic lashes that come in various thicknesses and lengths, along with a medical-grade adhesive that is safe for sensitive eyes and provides long-lasting hold."
+      },
+      {
+        "question": "What should I do if I experience any discomfort after my eyelash extension?",
+        "answer": "If you experience discomfort, such as irritation or itching, avoid rubbing your eyes. Contact your technician or salon immediately to assess if any lashes need to be adjusted or removed."
+      }
+    ]
+  },
+  {
+    "id": "Nail-Shaping",
+    "name": "Nail Shaping",
+    "description": "Achieve flawless nail contours with our professional nail shaping services. Whether you prefer square, oval, almond, or stiletto nails, our technicians will shape your nails to perfection while ensuring nail health and hygiene.",
+    "image": "https://images.pexels.com/photos/7990099/pexels-photo-7990099.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    "types": [
+      {
+        "name": "Coffin Nail Shape",
+        "image": "https://www.newbeauty.com/wp-content/uploads/2024/05/coffin-nails.jpg",
+        "description": "In this nail style, nails are pressed into a fine shape with flat and squared-off tips, creating an edgy look. The nail shape is similar to the shape of a coffin or a ballerina’s pointe shoe."
+      },
+      {
+        "name": "Almond Nail Shape",
+        "image": "https://i.pinimg.com/564x/45/0c/3b/450c3b19c8ab620cd83debd359ef8061.jpg",
+        "description": "In this nail shape, the nail wall is reduced towards the end in a round peak that resembles the shape of an almond. It creates an elegant look and portrays your feminine and stylish features."
+      },
+      {
+        "name": "Square Nail Shape",
+        "image": "https://lelotuslondon.co.uk/wp-content/uploads/2024/01/Which-Nail-Shape-is-Right-for-You-02.jpg",
+        "description": "In a square nail shape, nails are given a square shape by pressing the nails straight across the tip. The nails are flat on top and have sharp corners, providing a clean and polished look."
+      },
+      {
+        "name": "Stiletto Nail Shape",
+        "image": "https://i.redd.it/hw7cwilm60v91.jpg",
+        "description": "In the stiletto nail shape, nails are shaped like stiletto heels, textured in a pointed and sharp style. Stiletto nails give your manicure an edgy and bold look, providing a fabulous appearance."
+      },
+      {
+        "name": "Oval Nail Shape",
+        "image": "https://media.glamourmagazine.co.uk/photos/675c5b5551a8c9de682ddaa2/1:1/w_1080,h_1080,c_limit/OVAL%20NAILS%20131224%20135828254_232246645140874_6750127985546177313_n.jpg",
+        "description": "In an oval nail shape, the tips of your nails are rounded and elongated, slimming your fingers. Oval nails are perfect if you're looking for a timeless manicure with a classic style."
+      }
+    ],
+    "faq": [
+      {
+        "question": "What nail shapes can I choose from?",
+        "answer": "Common nail shapes include square, round, oval, almond, and stiletto. You can choose based on your personal style or finger shape."
+      },
+      {
+        "question": "Is nail shaping safe for weak nails?",
+        "answer": "Yes, we use gentle tools and techniques to ensure your nails remain strong and healthy."
+      },
+      {
+        "question": "What is the best nail shape for me?",
+        "answer": "The best nail shape depends on your natural nail length, width, finger shape, and lifestyle. Rounded oval and almond shapes are flattering for most hands, while square shapes suit wider nail beds."
+      },
+      {
+        "question": "How can I maintain the shape of my nails after shaping them?",
+        "answer": "Regularly file your nails in one direction, avoid biting or using them as tools, and apply a strengthening base coat to keep them healthy."
+      },
+      {
+        "question": "How often should I visit the salon for nail appointments?",
+        "answer": "Every 2–3 weeks is ideal to maintain shape, length, and nail health, depending on your nail growth rate."
+      },
+      {
+        "question": "What tools do you use for nail shaping?",
+        "answer": "We use professional-grade nail files, buffers, cuticle pushers, and sanitised clippers to ensure precise and safe shaping."
+      },
+      {
+        "question": "Which nail care product should I use to keep my nails healthy and in shape?",
+        "answer": "Use cuticle oil, nail strengthener, a hydrating hand cream, and a base coat enriched with vitamins to maintain strong, healthy nails."
+      }
+    ]
+  },
+  {
+    "id": "Nail-Art",
+    "name": "Nail Art",
+    "description": "Express your personality through our stunning nail art services. Choose from classic designs, trendy patterns, or let us create custom artwork to complement your style or event.",
+    "image": "https://images.pexels.com/photos/9649296/pexels-photo-9649296.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    "types": [
+      {
+        "name": "Glitter Nails",
+        "image": "https://i.pinimg.com/736x/04/38/af/0438af5937bceda09876fd0e500d5004.jpg",
+        "description": "Glitter nails give your nails a glamorous appearance by covering them entirely with glitter or creating ombre effects using glitter nail polish, offering a sparkling and eye-catching look."
+      },
+      {
+        "name": "3D Nail Art",
+        "image": "https://img.staticdj.com/eecdc90677acefdb4c6e791be26a476e.png",
+        "description": "3D Nail Art adds dimension to your nails using beads, crystals, and rhinestones, applied with nail glue and wet polish. This technique provides a unique and bold design that truly stands out."
+      },
+      {
+        "name": "Floral Nail Art",
+        "image": "https://c5d726099a76b68eeb00-7a01b9302ceb91366912645e73661123.ssl.cf2.rackcdn.com/product-hugerect-3392879-519310-1717928174-cd4a592ac314d32eef099d41437bc738.717928175_type_hugerect_nid_3392879_uid_519310_0",
+        "description": "Floral Nail Art is designed with feminine flower patterns, using flower stickers and stamps. These delicate designs add elegance and a touch of nature to your nails."
+      },
+      {
+        "name": "French Manicure",
+        "image": "https://i.pinimg.com/736x/b4/80/05/b4800546ec7cd7fecc3a90dfc4eb1dfe.jpg",
+        "description": "A French Manicure is a classic nail art where the tips are painted white and the rest of the nail is coated with a light polish. This timeless design creates a clean, elegant, and polished look."
+      },
+      {
+        "name": "Ombre Nail Art",
+        "image": "https://bizimages.withfloats.com/tile/65ef25e4cd052f1f07ad3a10.jpg",
+        "description": "Ombre Nail Art gives your nails a smooth, gradient effect, transitioning from light to dark or subtle to sparkling shades. This trendy and visually stunning look is perfect for anyone wanting a unique nail style."
+      }
+    ],
+    "faq": [
+      {
+        "question": "How long does nail art last?",
+        "answer": "It typically lasts 1-2 weeks depending on the type of polish and your nail care routine."
+      },
+      {
+        "question": "Can I bring my own nail art design?",
+        "answer": "Absolutely! You're welcome to bring a reference image and we’ll recreate it for you."
+      }
+    ]
+  },
+  {
+    "id": "Party-Makeup",
+    "name": "Party Makeup",
+    "description": "Shine bright at any event with our professional party makeup services. We blend trendy techniques and premium products to enhance your features and ensure you stand out with a glamorous, camera-ready look.",
+    "image": "https://cdn.pixabay.com/photo/2018/03/12/20/57/woman-3220835_1280.jpg",
+    "types": [
+      {
+        "name": "Natural Make-Up Look",
+        "image": "https://images.unsplash.com/photo-1566895733044-d2bdda8b6234?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "description": "If you prefer a natural, effortless look, our Natural Make-Up service includes tinted lip balm, subtle blush, lightweight foundation, simple eyeshadow, and concealer to enhance your natural, glowing complexion. Perfect for a soft, everyday look or a more radiant style."
+      },
+      {
+        "name": "Professional Make-Up Look",
+        "image": "https://cdn.pixabay.com/photo/2018/01/21/14/16/woman-3096664_1280.jpg",
+        "description": "For a polished and approachable appearance, our Professional Make-Up service is ideal for office events, formal parties, or professional gatherings. The look includes flawless foundation, well-defined eyebrows, natural blush, and mascara, leaving you confident and ready for any occasion."
+      }
+    ],
+    "faq": [
+      {
+        "question": "What’s included in a party makeup session?",
+        "answer": "Our session includes foundation, contouring, eyeshadow, eyeliner, mascara, lip color, and finishing spray."
+      },
+      {
+        "question": "Can party makeup be done for daytime events?",
+        "answer": "Yes! We tailor the look depending on the time of day and your preferences."
+      }
+    ]
+  },
+  {
+    "id": "Normal-Makeup",
+    "name": "Normal Makeup",
+    "description": "Our normal makeup service gives you a fresh, natural, and radiant look ideal for casual outings or workdays. Perfect for when you want to look polished without going over the top.",
+    "image": "https://cdn.pixabay.com/photo/2022/03/05/09/34/woman-7048766_1280.jpg",
+    "faq": [
+      {
+        "question": "How long does normal makeup take?",
+        "answer": "It takes around 30 to 45 minutes depending on the look you desire."
+      },
+      {
+        "question": "What’s the difference between normal and party makeup?",
+        "answer": "Normal makeup is subtle and light, while party makeup is more dramatic and designed for longer wear under bright lights."
+      }
+    ]
+  },
+  {
+    "id": "Waxing",
+    "name": "Waxing",
+    "description": "Experience smooth, hair-free skin with our professional waxing services. We offer full-body and targeted waxing using gentle, skin-friendly products that leave you feeling silky and confident.",
+    "image": "https://plus.unsplash.com/premium_photo-1661431392914-e3fc8ff0e51a?q=80&w=2016&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "faq": [
+      {
+        "question": "Is waxing painful?",
+        "answer": "There may be mild discomfort, especially for first-timers, but it gets easier with regular sessions."
+      },
+      {
+        "question": "How long do waxing results last?",
+        "answer": "Results typically last 3-6 weeks depending on your hair growth cycle."
+      }
+    ]
+  },
+  {
+    "id": "Threading",
+    "name": "Threading",
+    "description": "Define your brows and remove unwanted facial hair with our precise threading services. A natural and chemical-free option, threading gives sharp, clean results with minimal skin irritation.",
+    "image": "https://images.unsplash.com/photo-1519415387722-a1c3bbef716c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "types": [
+      {
+        "name": "Eyebrow & Forehead Threading",
+        "image": "https://www.thelashlounge.com/wp-content/uploads/2022/02/body.jpg",
+        "description": "Our eyebrow threading services help shape and define your eyebrows, creating a natural arch. We also offer forehead threading to ensure a smooth, hair-free forehead for a polished appearance."
+      },
+      {
+        "name": "Upper Lips Threading",
+        "image": "https://diaminyaesthetics.com/cdn/shop/articles/upper_lip_threading_58430868-e344-4217-ae07-d6193aa989aa.jpg?v=1743499657",
+        "description": "Upper lip threading helps remove unwanted facial hair, providing a smooth and hair-free upper lip that enhances the overall appearance of your facial features."
+      },
+      {
+        "name": "Full Face Threading",
+        "image": "https://trybe.imgix.net/38675/81281ef9-b77c-49a2-8e66-c45c2f1a3c0a.jpeg",
+        "description": "Our full face threading service removes unwanted facial hair, leaving your skin smooth and hair-free for several weeks. It's a convenient, long-lasting solution for well-groomed facial features."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Is threading better than waxing for facial hair?",
+        "answer": "Yes, threading is more precise and gentler on the skin, making it ideal for sensitive areas like eyebrows and the upper lip."
+      },
+      {
+        "question": "How often should I get threading done?",
+        "answer": "Every 2 to 4 weeks, depending on your hair growth."
+      }
+    ]
   }
 ]

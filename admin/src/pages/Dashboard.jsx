@@ -5,7 +5,6 @@ const Dashboard = () => {
     <div className="bg-white p-6 rounded-lg shadow-md">
       <h1 className="text-2xl font-semibold mb-4">Welcome to the Dashboard!</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {/* Dashboard Cards Example */}
         <div className="bg-blue-500 text-white p-6 rounded-lg shadow-md">
           <h2 className="text-lg font-medium">Total Products</h2>
           <p className="text-2xl font-bold">125</p>
@@ -22,7 +21,6 @@ const Dashboard = () => {
       <div className="mt-6">
         <h2 className="text-xl font-semibold">Recent Activity</h2>
         <ul className="space-y-2 mt-4">
-          {/* Example activity list */}
           <li className="bg-gray-100 p-4 rounded-lg shadow-sm">
             <span className="font-medium">New Order Received</span> - Order #456
           </li>

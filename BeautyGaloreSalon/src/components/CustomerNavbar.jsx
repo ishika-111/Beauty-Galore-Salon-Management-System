@@ -1,12 +1,9 @@
-import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import logo from "../assets/logo.png";
-import { FaHospitalUser, FaShoppingCart, FaUser } from "react-icons/fa";
+import { FaShoppingCart, FaUser } from "react-icons/fa";
 
 export default function CustomerNavbar() {
   const location = useLocation(); // Get the current URL path
-
-  // Function to check if the link is active
-  const isActive = (path) => location.pathname === path;
 
   return (
     <nav className="flex justify-between items-center p-10 z-50">
@@ -17,57 +14,84 @@ export default function CustomerNavbar() {
         </div>
       </div>
       <ul className="flex gap-6">
-        <li
-          className={`font-semibold transition duration-300 cursor-pointer ${
-            isActive("/")
-              ? "text-lime-700 underline"
-              : "hover:underline hover:text-lime-700"
-          }`}
-        >
-          <Link to="/customer">Home</Link>
+        {/* Use NavLink with the 'end' prop for exact matching */}
+        <li>
+          <NavLink
+            to="/customer"
+            end
+            className={({ isActive }) =>
+              `font-semibold transition duration-300 cursor-pointer ${
+                isActive
+                  ? "text-lime-700 underline"
+                  : "hover:underline hover:text-lime-700"
+              }`
+            }
+          >
+            Home
+          </NavLink>
         </li>
-        <li
-          className={`font-semibold transition duration-300 cursor-pointer ${
-            isActive("/courses")
-              ? "text-lime-700 underline"
-              : "hover:underline hover:text-lime-700"
-          }`}
-        >
-          <Link to="/customer/courses">Courses</Link>
+        <li>
+          <NavLink
+            to="/customer/courses"
+            className={({ isActive }) =>
+              `font-semibold transition duration-300 cursor-pointer ${
+                isActive
+                  ? "text-lime-700 underline"
+                  : "hover:underline hover:text-lime-700"
+              }`
+            }
+          >
+            Courses
+          </NavLink>
         </li>
-        <li
-          className={`font-semibold transition duration-300 cursor-pointer ${
-            isActive("/products")
-              ? "text-lime-700 underline"
-              : "hover:underline hover:text-lime-700"
-          }`}
-        >
-          <Link to="/customer/products">Products</Link>
+        <li>
+          <NavLink
+            to="/customer/products"
+            className={({ isActive }) =>
+              `font-semibold transition duration-300 cursor-pointer ${
+                isActive
+                  ? "text-lime-700 underline"
+                  : "hover:underline hover:text-lime-700"
+              }`
+            }
+          >
+            Products
+          </NavLink>
         </li>
-        <li
-          className={`font-semibold transition duration-300 cursor-pointer ${
-            isActive("/services")
-              ? "text-lime-700 underline"
-              : "hover:underline hover:text-lime-700"
-          }`}
-        >
-          <Link to="/customer/services">Services</Link>
+        <li>
+          <NavLink
+            to="/customer/services"
+            className={({ isActive }) =>
+              `font-semibold transition duration-300 cursor-pointer ${
+                isActive
+                  ? "text-lime-700 underline"
+                  : "hover:underline hover:text-lime-700"
+              }`
+            }
+          >
+            Services
+          </NavLink>
         </li>
-        <li
-          className={`font-semibold transition duration-300 cursor-pointer ${
-            isActive("/aboutus")
-              ? "text-lime-700 underline"
-              : "hover:underline hover:text-lime-700"
-          }`}
-        >
-          <Link to="/customer/aboutus">About Us</Link>
+        <li>
+          <NavLink
+            to="/customer/aboutus"
+            className={({ isActive }) =>
+              `font-semibold transition duration-300 cursor-pointer ${
+                isActive
+                  ? "text-lime-700 underline"
+                  : "hover:underline hover:text-lime-700"
+              }`
+            }
+          >
+            About Us
+          </NavLink>
         </li>
       </ul>
       <div className="hidden md:flex items-center gap-4">
         <Link to="/customer/book">
           <button
             className={`rounded p-2 font-bold text-white ${
-              isActive("/book")
+              location.pathname === "/customer/book"
                 ? "bg-lime-800"
                 : "bg-lime-800 hover:bg-lime-700"
             }`}
@@ -77,17 +101,17 @@ export default function CustomerNavbar() {
         </Link>
 
         <NavLink to="/customer/cart">
-          <button className=" p-2 font-bold text-white">
+          <button className="p-2 font-bold text-white">
             <FaShoppingCart
-              className=" text-lime-800 cursor-pointer transition"
+              className="text-lime-800 cursor-pointer transition"
               size={24}
             />
           </button>
         </NavLink>
         <NavLink to="/customer/profile">
-          <button className=" p-2 font-bold text-white">
+          <button className="p-2 font-bold text-white">
             <FaUser
-              className=" text-lime-800 cursor-pointer transition"
+              className="text-lime-800 cursor-pointer transition"
               size={24}
             />
           </button>

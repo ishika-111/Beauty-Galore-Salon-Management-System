@@ -33,7 +33,7 @@ const ServicePage = () => {
               key={service.id}
               image={service.image}
               title={service.name}
-              onLearnMore={() => navigate(`/services/${service.id}`)}
+              onLearnMore={() => navigate(`/customer/services/${service.id}`)}
             />
           ))}
         </div>

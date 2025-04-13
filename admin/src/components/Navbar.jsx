@@ -6,7 +6,6 @@ const Navbar = () => {
   return (
     <nav className="bg-white shadow-md fixed w-full h-20 top-0 z-10 flex items-center px-6">
       <div className="flex items-center gap-3">
-        {/* Logo */}
         <img src={logo} className="h-14 w-auto" alt="Logo" />
         <Link
           to="/dashboard"
@@ -16,7 +15,6 @@ const Navbar = () => {
         </Link>
       </div>
 
-      {/* Admin Section (Right Aligned) */}
       <div className="ml-auto">
         <button className="flex items-center focus:outline-none text-gray-700">
           <span>Admin</span>

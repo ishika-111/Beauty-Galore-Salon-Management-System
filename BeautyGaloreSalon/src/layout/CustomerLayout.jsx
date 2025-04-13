@@ -1,14 +1,16 @@
 import { Outlet } from "react-router-dom";
-import NavBar from "../components/NavBar";
+
 import Footer from "../components/Footer";
 import CustomerNavbar from "../components/CustomerNavbar";
 
 export default function CustomerLayout() {
   return (
-    <>
+    <div data-theme="lemonade">
       <CustomerNavbar />
-      <Outlet />
+      <div className="border-t border-gray-300">
+        <Outlet />
+      </div>
       <Footer />
-    </>
+    </div>
   );
 }

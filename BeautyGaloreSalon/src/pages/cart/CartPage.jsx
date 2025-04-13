@@ -102,7 +102,7 @@ const CartPage = () => {
 
   return (
     <>
-      <div className="min-h-screen bg-gray-100 flex flex-col items-center p-6">
+      <div className="min-h-screen flex flex-col items-center p-6">
         <h2 className="text-3xl font-bold mb-6">Shopping Cart</h2>
 
         {cartItems.length === 0 ? (

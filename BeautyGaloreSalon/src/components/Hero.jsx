@@ -48,7 +48,7 @@ export default function Hero() {
         <h1 className="text-3xl text-center font-semibold">
           Welcome to Beauty Galore Salon
         </h1>
-        <div className="p-4 text-center">
+        <div className="p-4 text-center font-poppins">
           <p1>
             Welcome to Beauty Galore Salon, your one-stop destination for
             beauty, style, and self-care. Explore a world of exceptional hair,
@@ -82,7 +82,7 @@ export default function Hero() {
           <div className="text-center mt-8">
             <button
               onClick={() => navigate("/services")}
-              className="bg-lime-700 text-white px-6 py-3 rounded-full font-semibold hover:bg-lime-600 transition"
+              className="bg-lime-800 text-white px-6 py-3 rounded-full font-semibold hover:bg-lime-700 transition"
             >
               Explore All Services
             </button>

@@ -6,8 +6,7 @@ import CoursePage from "./pages/customer/CoursePage";
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
 import CustomerLayout from "./layout/CustomerLayout";
-import StaffLayout from "./layout/StaffLayout";
-import StaffHomePage from "./pages/staff/StaffHomePage";
+
 import AboutUsPage from "./pages/customer/AboutUsPage";
 import BookNowPage from "./pages/customer/BookNowPage";
 import { Toaster } from "react-hot-toast";
@@ -19,6 +18,9 @@ import Profile from "./pages/customer/Profile";
 import CartPage from "./pages/cart/CartPage";
 import MainLayout from "./layout/MainLayout";
 import ServiceDetails from "./pages/customer/ServiceDetails";
+import Payment from "./pages/payment/Payment";
+import Failure from "./pages/payment/Failure";
+import Success from "./pages/payment/Success";
 
 export default function App() {
   return (
@@ -48,10 +50,14 @@ export default function App() {
           <Route path="/customer/courses" element={<CoursePage />} />
           <Route path="/customer/profile" element={<Profile />} />
           <Route path="/customer/services" element={<ServicePage />} />
+          <Route path="/customer/services/:id" element={<ServiceDetails />} />
           <Route path="/customer/aboutus" element={<AboutUsPage />} />
           <Route path="/customer/book" element={<BookNowPage />} />
           <Route path="/customer/products" element={<ProductPage />} />
           <Route path="/customer/cart" element={<CartPage />} />
+          <Route path="/customer/payment" element={<Payment />} />
+          <Route path="/customer/failure" element={<Failure />} />
+          <Route path="/customer/success" element={<Success />} />
         </Route>
       </Routes>
     </>

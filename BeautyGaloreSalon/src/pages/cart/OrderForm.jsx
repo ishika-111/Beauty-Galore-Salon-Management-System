@@ -1,9 +1,8 @@
-// src/components/OrderForm.js
-
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import Cookies from "js-cookie";
+import Payment from "../payment/Payment";
 
 const OrderForm = ({ cartItems, totalAmount }) => {
   const [address, setAddress] = useState(""); // Store user address
@@ -129,14 +128,25 @@ const OrderForm = ({ cartItems, totalAmount }) => {
         <option value="PICKUP">Pickup</option>
       </select>
 
+      {paymentMethod === "CARD" && (
+        <div className="flex justify-center mb-4">
+          <Payment
+            amount={totalAmount} // Only the base amount (without delivery or tax)
+          />
+        </div>
+      )}
+
       {orderType === "DELIVERY" && (
         <div className="text-xl font-semibold mb-4">
           Delivery Charge: Rs 150
         </div>
       )}
 
+      <div className="text-xl font-semibold mb-4">Tax: Rs 10</div>
+
       <div className="text-xl font-semibold mb-4">
-        Total: Rs {totalAmount + (orderType === "DELIVERY" ? 150 : 0)}
+        Total: Rs {totalAmount + 150 + 10}{" "}
+        {/* Including delivery charge and tax */}
       </div>
 
       <button
