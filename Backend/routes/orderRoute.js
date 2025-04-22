@@ -2,6 +2,7 @@ import express from "express";
 
 import {
   getAllOrders,
+  getCustomerOrders,
   placeOrder,
   updateOrderStatus,
 } from "../controller/orderController.js";
@@ -17,6 +18,7 @@ orderRouter.put(
   authenticateAdmin,
   updateOrderStatus
 );
+orderRouter.get("/my-orders", authenticateUser, getCustomerOrders);
 
 // orderRouter.put("/update/:cartItemId", authenticateUser, updateCartItem);
 

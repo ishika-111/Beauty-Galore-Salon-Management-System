@@ -116,6 +116,7 @@ const createAppointment = async (req, res) => {
 };
 
 // ✅ Cancel Appointment (requires authentication)
+// ✅ Cancel Appointment (within 2 hours of booking)
 const cancelAppointment = async (req, res) => {
   try {
     const { id } = req.params;
@@ -137,14 +138,13 @@ const cancelAppointment = async (req, res) => {
         .json({ error: "You can only cancel your own appointments" });
     }
 
-    // Ensure that cancellation is done at least 24 hours before the scheduled time
-    const appointmentTime = DateTime.fromJSDate(appointment.date);
+    // Ensure that cancellation is done within 2 hours of booking
+    const appointmentCreatedAt = DateTime.fromJSDate(appointment.createdAt); // Use createdAt for booking time
     const now = DateTime.local();
 
-    if (appointmentTime.diff(now, "hours").hours < 24) {
+    if (now.diff(appointmentCreatedAt, "hours").hours > 2) {
       return res.status(400).json({
-        error:
-          "You can only cancel appointments 24 hours before the scheduled time",
+        error: "You can only cancel appointments within 2 hours of booking",
       });
     }
 
@@ -157,4 +157,51 @@ const cancelAppointment = async (req, res) => {
   }
 };
 
-export { createAppointment, cancelAppointment };
+const getUserAppointments = async (req, res) => {
+  try {
+    const userId = req.user?.id;
+    console.log("yserID", userId);
+    if (!userId) {
+      return res.status(400).json({ error: "User not authenticated" });
+    }
+
+    const appointments = await prisma.appointment.findMany({
+      where: { userId },
+    });
+
+    if (appointments.length === 0) {
+      return res.status(404).json({ error: "No appointments found" });
+    }
+
+    res.status(200).json({ appointments });
+  } catch (error) {
+    console.error("❌ Error fetching appointments:", error);
+    res.status(500).json({ error: "Failed to fetch appointments" });
+  }
+};
+
+const getAllUserAppointments = async (req, res) => {
+  try {
+    if (!req.adminId) {
+      return res.status(403).json({ message: "Access denied" });
+    }
+
+    const appointments = await prisma.appointment.findMany();
+
+    if (appointments.length === 0) {
+      return res.status(404).json({ error: "No appointments found" });
+    }
+
+    res.status(200).json({ appointments });
+  } catch (error) {
+    console.error("❌ Error fetching appointments:", error);
+    res.status(500).json({ error: "Failed to fetch appointments" });
+  }
+};
+
+export {
+  createAppointment,
+  cancelAppointment,
+  getUserAppointments,
+  getAllUserAppointments,
+};

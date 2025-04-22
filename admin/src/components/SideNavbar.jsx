@@ -78,6 +78,18 @@ const SideNavbar = () => {
               <FaCog className="w-5 h-5" /> Settings
             </NavLink>
           </li>
+          <li>
+            <NavLink
+              to="/appoinment"
+              className={({ isActive }) =>
+                `flex items-center gap-3 px-6 py-3 text-sm hover:bg-gray-800 transition-all ${
+                  isActive ? "bg-gray-700" : ""
+                }`
+              }
+            >
+              <FaCog className="w-5 h-5" /> appoinment
+            </NavLink>
+          </li>
         </ul>
       </nav>
 

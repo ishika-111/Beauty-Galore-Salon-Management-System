@@ -18,6 +18,7 @@ const Profile = () => {
   const fetchProfile = async () => {
     try {
       const token = Cookies.get("token");
+      console.log("Fetched token:", token); // Debugging: Check if token is being retrieved
       if (!token) throw new Error("Unauthorized: Please log in first.");
 
       const response = await axios.get(
@@ -28,6 +29,7 @@ const Profile = () => {
         }
       );
 
+      console.log("Profile fetched:", response.data); // Debugging: Check response from API
       setProfile(response.data);
       setLoading(false);
       setEditing(false); // Exit edit mode after fetching data
@@ -39,6 +41,7 @@ const Profile = () => {
       setValue("dob", response.data.dob);
       setValue("gender", response.data.gender);
     } catch (err) {
+      console.error("Error fetching profile:", err); // Debugging: Log error
       setProfile(null);
       setLoading(false);
     }
@@ -46,17 +49,21 @@ const Profile = () => {
 
   // ✅ Create or Update Profile
   const onSubmit = async (data) => {
+    console.log("Form data on submit:", data); // Debugging: Check form data being submitted
     try {
       const token = Cookies.get("token");
+      console.log("Token in submit:", token); // Debugging: Check token in submit
       if (!token) throw new Error("Unauthorized: Please log in first.");
 
       if (profile) {
+        console.log("Updating profile..."); // Debugging: Profile exists, so updating
         await axios.put("http://localhost:5000/api/customer/profile", data, {
           headers: { Authorization: `Bearer ${token}` },
           withCredentials: true,
         });
         toast.success("Profile updated successfully!");
       } else {
+        console.log("Creating new profile..."); // Debugging: Profile does not exist, so creating
         await axios.post("http://localhost:5000/api/customer/profile", data, {
           headers: { Authorization: `Bearer ${token}` },
           withCredentials: true,
@@ -64,8 +71,9 @@ const Profile = () => {
         toast.success("Profile created successfully!");
       }
 
-      fetchProfile();
+      fetchProfile(); // Fetch updated profile after submission
     } catch (err) {
+      console.error("Error in submit:", err); // Debugging: Log error during submission
       toast.error(err.response?.data?.message || "Failed to save profile");
     }
   };

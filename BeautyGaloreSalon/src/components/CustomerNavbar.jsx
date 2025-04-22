@@ -1,93 +1,55 @@
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 import { FaShoppingCart, FaUser } from "react-icons/fa";
+import { useState } from "react";
 
 export default function CustomerNavbar() {
-  const location = useLocation(); // Get the current URL path
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
+
+  const handleLogout = () => {
+    localStorage.clear(); // Or use your logout logic (Cookies.remove, etc.)
+    navigate("/");
+  };
 
   return (
-    <nav className="flex justify-between items-center p-10 z-50">
+    <nav className="flex justify-between items-center p-10 z-50 relative">
       <div className="flex items-center gap-4">
         <img src={logo} className="h-20 w-auto" alt="BeautyGaloreSalon Logo" />
         <div className="text-4xl text-black font-semibold hover:text-lime-700 transition duration-300 cursor-pointer">
           <Link to="/">BeautyGaloreSalon</Link>
         </div>
       </div>
+
       <ul className="flex gap-6">
-        {/* Use NavLink with the 'end' prop for exact matching */}
-        <li>
-          <NavLink
-            to="/customer"
-            end
-            className={({ isActive }) =>
-              `font-semibold transition duration-300 cursor-pointer ${
-                isActive
-                  ? "text-lime-700 underline"
-                  : "hover:underline hover:text-lime-700"
-              }`
-            }
-          >
-            Home
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/customer/courses"
-            className={({ isActive }) =>
-              `font-semibold transition duration-300 cursor-pointer ${
-                isActive
-                  ? "text-lime-700 underline"
-                  : "hover:underline hover:text-lime-700"
-              }`
-            }
-          >
-            Courses
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/customer/products"
-            className={({ isActive }) =>
-              `font-semibold transition duration-300 cursor-pointer ${
-                isActive
-                  ? "text-lime-700 underline"
-                  : "hover:underline hover:text-lime-700"
-              }`
-            }
-          >
-            Products
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/customer/services"
-            className={({ isActive }) =>
-              `font-semibold transition duration-300 cursor-pointer ${
-                isActive
-                  ? "text-lime-700 underline"
-                  : "hover:underline hover:text-lime-700"
-              }`
-            }
-          >
-            Services
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/customer/aboutus"
-            className={({ isActive }) =>
-              `font-semibold transition duration-300 cursor-pointer ${
-                isActive
-                  ? "text-lime-700 underline"
-                  : "hover:underline hover:text-lime-700"
-              }`
-            }
-          >
-            About Us
-          </NavLink>
-        </li>
+        {["Home", "Courses", "Products", "Services", "About Us"].map(
+          (item, index) => {
+            const to = `/customer/${
+              item === "Home" ? "" : item.toLowerCase().replace(" ", "")
+            }`;
+            return (
+              <li key={index}>
+                <NavLink
+                  to={to}
+                  end={item === "Home"}
+                  className={({ isActive }) =>
+                    `font-semibold transition duration-300 cursor-pointer ${
+                      isActive
+                        ? "text-lime-700 underline"
+                        : "hover:underline hover:text-lime-700"
+                    }`
+                  }
+                >
+                  {item}
+                </NavLink>
+              </li>
+            );
+          }
+        )}
       </ul>
-      <div className="hidden md:flex items-center gap-4">
+
+      <div className="hidden md:flex items-center gap-4 relative">
         <Link to="/customer/book">
           <button
             className={`rounded p-2 font-bold text-white ${
@@ -108,14 +70,56 @@ export default function CustomerNavbar() {
             />
           </button>
         </NavLink>
-        <NavLink to="/customer/profile">
+
+        {/* Profile Dropdown */}
+        <div
+          className="relative group"
+          onMouseEnter={() => setIsProfileOpen(true)}
+          onMouseLeave={() => setIsProfileOpen(false)}
+        >
           <button className="p-2 font-bold text-white">
             <FaUser
               className="text-lime-800 cursor-pointer transition"
               size={24}
             />
           </button>
-        </NavLink>
+          {isProfileOpen && (
+            <ul className="absolute right-0 mt-2 w-56 bg-white border border-lime-100 rounded-xl shadow-lg z-50 transition duration-300 ease-in-out">
+              <li>
+                <Link
+                  to="/customer/profile"
+                  className="block px-5 py-3 text-gray-800 hover:bg-lime-100 hover:text-lime-800 rounded-t-xl font-medium transition duration-200"
+                >
+                  🧍 My Profile
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/customer/book/get"
+                  className="block px-5 py-3 text-gray-800 hover:bg-lime-100 hover:text-lime-800 font-medium transition duration-200"
+                >
+                  📅 My Appointments
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/customer/orders/mine"
+                  className="block px-5 py-3 text-gray-800 hover:bg-lime-100 hover:text-lime-800 font-medium transition duration-200"
+                >
+                  📅 My Orders
+                </Link>
+              </li>
+              <li>
+                <button
+                  onClick={handleLogout}
+                  className="w-full text-left px-5 py-3 text-gray-800 hover:bg-red-100 hover:text-red-600 rounded-b-xl font-medium transition duration-200"
+                >
+                  🚪 Logout
+                </button>
+              </li>
+            </ul>
+          )}
+        </div>
       </div>
     </nav>
   );

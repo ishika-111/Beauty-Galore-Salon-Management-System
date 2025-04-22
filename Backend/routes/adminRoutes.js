@@ -7,6 +7,7 @@ import {
   getProductItems,
   updateProductItem,
 } from "../controller/productController.js";
+import { getAllUserAppointments } from "../controller/appointmentController.js";
 
 const adminRouter = express.Router();
 
@@ -15,5 +16,6 @@ adminRouter.post("/product", authenticateAdmin, createProductItem);
 adminRouter.put("/product/:id", authenticateAdmin, updateProductItem);
 adminRouter.delete("/product/:id", authenticateAdmin, deleteProductItem);
 adminRouter.get("/product", authenticateAdmin, getProductItems);
+adminRouter.get("/appointment", authenticateAdmin, getAllUserAppointments);
 
 export default adminRouter;

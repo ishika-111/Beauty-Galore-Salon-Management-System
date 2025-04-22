@@ -5,6 +5,7 @@ import AddProduct from "./components/AddProduct";
 import ProductList from "./components/ProductList";
 import DashboardLayout from "../layout/DashboardLayout";
 import OrderList from "./components/Orderlist";
+import AllAppointmentList from "./components/AllAppoinmentList";
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
         <Route path="/add/product" element={<AddProduct />} />
         <Route path="/product/list" element={<ProductList />} />
         <Route path="/orders" element={<OrderList />} />
+        <Route path="/appoinment" element={<AllAppointmentList />} />
       </Route>
     </Routes>
   );

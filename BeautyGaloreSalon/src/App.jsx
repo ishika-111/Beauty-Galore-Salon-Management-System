@@ -21,6 +21,8 @@ import ServiceDetails from "./pages/customer/ServiceDetails";
 import Payment from "./pages/payment/Payment";
 import Failure from "./pages/payment/Failure";
 import Success from "./pages/payment/Success";
+import AppointmentList from "./components/AppointmentList";
+import MyOrders from "./components/MyOrders";
 
 export default function App() {
   return (
@@ -53,11 +55,14 @@ export default function App() {
           <Route path="/customer/services/:id" element={<ServiceDetails />} />
           <Route path="/customer/aboutus" element={<AboutUsPage />} />
           <Route path="/customer/book" element={<BookNowPage />} />
+          <Route path="/customer/book/get" element={<AppointmentList />} />
+          <Route path="/customer/orders/mine" element={<MyOrders />} />
+
           <Route path="/customer/products" element={<ProductPage />} />
           <Route path="/customer/cart" element={<CartPage />} />
           <Route path="/customer/payment" element={<Payment />} />
-          <Route path="/customer/failure" element={<Failure />} />
-          <Route path="/customer/success" element={<Success />} />
+          <Route path="/customer/payment/failure" element={<Failure />} />
+          <Route path="/customer/payment/success" element={<Success />} />
         </Route>
       </Routes>
     </>

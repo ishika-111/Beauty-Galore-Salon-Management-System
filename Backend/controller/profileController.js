@@ -81,7 +81,8 @@ export const createProfile = async (req, res) => {
 
     res.status(201).json(profile);
   } catch (error) {
-    res.status(500).json({ error: "Failed to create profile" });
+    console.error("Error creating profile:", error); // Log the full error stack
+    res.status(500).json({ error: error.message || "Failed to save profile" });
   }
 };
 

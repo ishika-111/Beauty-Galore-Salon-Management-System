@@ -21,7 +21,7 @@ const Orderlist = () => {
 
     try {
       const response = await axios.get(
-        "http://localhost:5000/api/admin/orders",
+        "http://localhost:5000/api/admin/order/orders",
         {
           headers: { Authorization: `Bearer ${token} ` },
         }

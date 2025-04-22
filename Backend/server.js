@@ -11,6 +11,8 @@ import bcrypt from "bcrypt";
 import cartRouter from "./routes/cartRoutes.js";
 import profileRouter from "./routes/profileRoutes.js";
 import orderRouter from "./routes/orderRoute.js";
+import paymentRouter from "./routes/paymentRoutes.js";
+import dashboardRouter from "./routes/dashboardRoutes.js";
 
 dotenv.config();
 const app = express();
@@ -33,10 +35,14 @@ app.get("/", (req, res) => {
 app.use("/api/users", userRouter);
 
 app.use("/api/appointment", appointmentRouter);
-app.use("/api/admin", adminRouter, orderRouter);
+app.use("/api/admin", adminRouter);
+app.use("/api/admin/order", orderRouter);
+app.use("/api/admin/dashboard", dashboardRouter);
+
 app.use("/api/cart", cartRouter);
 app.use("/api/customer", profileRouter);
 app.use("/api/orders", orderRouter);
+app.use("/api/payment", paymentRouter);
 
 const createDefaultAdmin = async () => {
   try {

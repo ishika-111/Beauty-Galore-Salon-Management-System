@@ -35,6 +35,7 @@ export default function BookNow() {
     if (!token) {
       return toast.error("Please log in first");
     }
+    console.log("Token:", token); // Debugging the token
 
     try {
       const response = await axios.post(
