@@ -10,7 +10,7 @@ const appointmentRouter = express.Router();
 
 // Protect the routes with the authenticateUser middleware
 appointmentRouter.post("/create", authenticateUser, createAppointment); // Book an appointment (requires authentication)
-appointmentRouter.delete("/:id/cancel", authenticateUser, cancelAppointment); // Delete an appointment (requires authentication)
+appointmentRouter.put("/:id/cancel", authenticateUser, cancelAppointment); // Delete an appointment (requires authentication)
 appointmentRouter.get("/get", authenticateUser, getUserAppointments);
 
 // Route to cancel an appointment

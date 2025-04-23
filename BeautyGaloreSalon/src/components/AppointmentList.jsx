@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import AppointmentCancel from "./AppoinmentCancel";
 import Cookies from "js-cookie";
 import toast from "react-hot-toast";
+import AppointmentCancel from "./AppoinmentCancel";
 
 const AppointmentList = () => {
   const [appointments, setAppointments] = useState([]);
@@ -12,7 +12,6 @@ const AppointmentList = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Pagination state
   const [currentPage, setCurrentPage] = useState(1);
   const appointmentsPerPage = 5;
 
@@ -21,7 +20,9 @@ const AppointmentList = () => {
       const token = Cookies.get("token");
 
       if (!token) {
-        return toast.error("Please log in first");
+        toast.error("Please log in first");
+        setLoading(false);
+        return;
       }
 
       try {
@@ -32,12 +33,13 @@ const AppointmentList = () => {
             withCredentials: true,
           }
         );
-        setAppointments(res.data.appointments);
-        setFiltered(res.data.appointments);
-        setLoading(false);
+
+        setAppointments(res.data.appointments || []);
+        setFiltered(res.data.appointments || []);
       } catch (err) {
         console.error(err);
         setError("Failed to fetch appointments");
+      } finally {
         setLoading(false);
       }
     };
@@ -59,7 +61,7 @@ const AppointmentList = () => {
     }
 
     setFiltered(filteredData);
-    setCurrentPage(1); // reset to first page on new filter
+    setCurrentPage(1);
   }, [searchTerm, dateFilter, appointments]);
 
   const totalPages = Math.ceil(filtered.length / appointmentsPerPage);
@@ -101,7 +103,9 @@ const AppointmentList = () => {
       {error && <p className="text-red-500 text-center text-lg">{error}</p>}
 
       {!loading && !error && filtered.length === 0 && (
-        <p className="text-center text-gray-600">No appointments found.</p>
+        <p className="text-center text-gray-600 italic">
+          No appointments found.
+        </p>
       )}
 
       {!loading && !error && filtered.length > 0 && (
@@ -113,6 +117,7 @@ const AppointmentList = () => {
                   <th className="px-6 py-4 text-left">Service</th>
                   <th className="px-6 py-4 text-left">Date</th>
                   <th className="px-6 py-4 text-left">Time</th>
+                  <th className="px-6 py-4 text-left">Status</th>
                   <th className="px-6 py-4 text-left">Action</th>
                 </tr>
               </thead>
@@ -125,8 +130,13 @@ const AppointmentList = () => {
                     <td className="px-6 py-4">{appointment.service}</td>
                     <td className="px-6 py-4">{appointment.date}</td>
                     <td className="px-6 py-4">{appointment.time}</td>
+                    <td className="px-6 py-4">{appointment.status}</td>
                     <td className="px-6 py-4">
-                      <AppointmentCancel appointmentId={appointment.id} />
+                      <AppointmentCancel
+                        appointmentId={appointment.id}
+                        createdAt={appointment.createdAt}
+                        status={appointment.status}
+                      />
                     </td>
                   </tr>
                 ))}

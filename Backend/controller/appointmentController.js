@@ -101,6 +101,7 @@ const createAppointment = async (req, res) => {
         time: requestedTime,
         service,
         userId,
+        status: "Pending", // Default status
       },
     });
 
@@ -117,43 +118,48 @@ const createAppointment = async (req, res) => {
 
 // ✅ Cancel Appointment (requires authentication)
 // ✅ Cancel Appointment (within 2 hours of booking)
+
 const cancelAppointment = async (req, res) => {
   try {
     const { id } = req.params;
     const userId = req.user?.id;
 
-    // Find the appointment by id
     const appointment = await prisma.appointment.findUnique({
-      where: { id: parseInt(id) },
+      where: { id: Number(id) },
     });
 
     if (!appointment) {
       return res.status(404).json({ error: "Appointment not found" });
     }
 
-    // Ensure that the user is canceling their own appointment
     if (appointment.userId !== userId) {
       return res
         .status(403)
         .json({ error: "You can only cancel your own appointments" });
     }
 
-    // Ensure that cancellation is done within 2 hours of booking
-    const appointmentCreatedAt = DateTime.fromJSDate(appointment.createdAt); // Use createdAt for booking time
+    const createdAt = DateTime.fromJSDate(appointment.createdAt);
     const now = DateTime.local();
+    const hoursSinceBooking = now.diff(createdAt).as("hours");
 
-    if (now.diff(appointmentCreatedAt, "hours").hours > 2) {
+    if (hoursSinceBooking > 2) {
       return res.status(400).json({
         error: "You can only cancel appointments within 2 hours of booking",
       });
     }
 
-    // Delete the appointment
-    await prisma.appointment.delete({ where: { id: parseInt(id) } });
+    // Update status to "Cancelled" instead of deleting the appointment
+    await prisma.appointment.update({
+      where: { id: Number(id) },
+      data: { status: "Cancelled" }, // Change status instead of deletion
+    });
 
-    res.status(200).json({ message: "Appointment canceled successfully" });
+    return res
+      .status(200)
+      .json({ message: "Appointment canceled successfully" });
   } catch (error) {
-    res.status(500).json({ error: "Failed to cancel appointment" });
+    console.error("Cancel error:", error);
+    return res.status(500).json({ error: "Failed to cancel appointment" });
   }
 };
 
@@ -199,9 +205,50 @@ const getAllUserAppointments = async (req, res) => {
   }
 };
 
+const confirmAppointment = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const adminId = req.adminId; // Admin's ID from the request
+
+    if (!adminId) {
+      return res.status(403).json({ message: "Access denied" });
+    }
+
+    const appointment = await prisma.appointment.findUnique({
+      where: { id: Number(id) },
+    });
+
+    if (!appointment) {
+      return res.status(404).json({ error: "Appointment not found" });
+    }
+
+    // Check if the status is "Pending"
+    if (appointment.status !== "Pending") {
+      return res
+        .status(400)
+        .json({ error: "Only pending appointments can be confirmed" });
+    }
+
+    // Update the status to "Confirmed"
+    const updatedAppointment = await prisma.appointment.update({
+      where: { id: Number(id) },
+      data: { status: "Confirmed" },
+    });
+
+    return res.status(200).json({
+      message: "Appointment confirmed successfully",
+      appointment: updatedAppointment,
+    });
+  } catch (error) {
+    console.error("Confirm error:", error);
+    return res.status(500).json({ error: "Failed to confirm appointment" });
+  }
+};
+
 export {
   createAppointment,
   cancelAppointment,
   getUserAppointments,
   getAllUserAppointments,
+  confirmAppointment,
 };

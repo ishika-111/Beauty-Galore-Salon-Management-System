@@ -41,6 +41,40 @@ const AllAppointmentList = () => {
     fetchAppointments();
   }, []);
 
+  // Function to confirm the appointment
+  const confirmAppointment = async (appointmentId) => {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      return toast.error("Please log in first");
+    }
+
+    try {
+      const res = await axios.put(
+        `http://localhost:5000/api/admin/appointment/${appointmentId}/confirm`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      toast.success(res.data.message);
+      // Refresh the appointments list after confirming
+      setAppointments((prevAppointments) =>
+        prevAppointments.map((appointment) =>
+          appointment.id === appointmentId
+            ? { ...appointment, status: "Confirmed" }
+            : appointment
+        )
+      );
+    } catch (err) {
+      console.error(err);
+      toast.error(err.response?.data?.error || "Failed to confirm appointment");
+    }
+  };
+
   return (
     <div className="max-w-5xl mx-auto px-4 py-8">
       <h2 className="text-2xl font-bold mb-6 text-center text-lime-700">
@@ -73,6 +107,9 @@ const AllAppointmentList = () => {
                   Time
                 </th>
                 <th className="py-3 px-4 text-left text-sm font-semibold">
+                  Status
+                </th>
+                <th className="py-3 px-4 text-left text-sm font-semibold">
                   Action
                 </th>
               </tr>
@@ -88,7 +125,20 @@ const AllAppointmentList = () => {
                   <td className="py-3 px-4 text-sm">{appointment.service}</td>
                   <td className="py-3 px-4 text-sm">{appointment.date}</td>
                   <td className="py-3 px-4 text-sm">{appointment.time}</td>
-                  <td className="py-3 px-4 text-sm text-gray-500 italic">—</td>
+                  <td className="py-3 px-4 text-sm">{appointment.status}</td>
+                  <td className="py-3 px-4 text-sm">
+                    {appointment.status === "Pending" && (
+                      <button
+                        onClick={() => confirmAppointment(appointment.id)}
+                        className="px-4 py-2 text-white bg-lime-500 rounded-lg hover:bg-lime-600"
+                      >
+                        Confirm
+                      </button>
+                    )}
+                    {appointment.status === "Confirmed" && (
+                      <span className="text-green-500">Confirmed</span>
+                    )}
+                  </td>
                 </tr>
               ))}
             </tbody>

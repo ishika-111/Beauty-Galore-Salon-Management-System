@@ -101,7 +101,7 @@ const Success = () => {
                   <strong>Total Amount:</strong> Rs.{orderDetails.totalAmount}
                 </p>
                 <p className="text-gray-600">
-                  <strong>Delivery Charge:</strong> Rs.
+                  <strong>Delivery Charge:</strong>
                   {orderDetails.deliveryCharge}
                 </p>
               </div>
