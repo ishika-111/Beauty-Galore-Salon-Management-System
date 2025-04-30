@@ -48,7 +48,7 @@ const Login = () => {
               placeholder="Enter your email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-lime-500 focus:border-lime-500"
             />
           </div>
           <div className="mb-6">
@@ -60,12 +60,12 @@ const Login = () => {
               placeholder="Enter your password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-lime-500 focus:border-lime-500"
             />
           </div>
           <button
             type="submit"
-            className="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+            className="w-full bg-lime-800 text-white py-2 px-4 rounded-md hover:bg-lime-700 focus:outline-none focus:ring-2 focus:ring-lime-500 focus:ring-offset-2"
           >
             Login
           </button>

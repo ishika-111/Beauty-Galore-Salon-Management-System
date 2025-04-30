@@ -11,6 +11,7 @@ const cartRouter = express.Router();
 
 cartRouter.post("/add", authenticateUser, addToCart);
 cartRouter.get("/", authenticateUser, getCart);
+
 cartRouter.delete("/remove/:cartItemId", authenticateUser, removeFromCart);
 cartRouter.put("/update/:cartItemId", authenticateUser, updateCartItem);
 

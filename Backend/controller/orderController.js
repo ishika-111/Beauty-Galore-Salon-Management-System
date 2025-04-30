@@ -157,3 +157,49 @@ export const getCustomerOrders = async (req, res) => {
     res.status(500).json({ message: "Failed to fetch customer orders" });
   }
 };
+
+export const cancelOrder = async (req, res) => {
+  const { orderId } = req.params;
+  const userId = req.user?.id;
+
+  try {
+    const order = await prisma.order.findUnique({
+      where: { id: parseInt(orderId) },
+    });
+
+    if (!order) {
+      return res.status(404).json({ message: "Order not found" });
+    }
+
+    if (order.userId !== userId) {
+      return res.status(403).json({ message: "Unauthorized" });
+    }
+
+    // ✅ Only allow cancellation if orderType is "COD" and paymentMethod is "CASH"
+    if (order.orderType !== "PICKUP" || order.paymentMethod !== "CARD") {
+      return res.status(400).json({
+        message: "Only COD orders with CASH payment can be canceled",
+      });
+    }
+
+    // ✅ Only allow cancellation if status is PENDING
+    if (order.status !== "PENDING") {
+      return res.status(400).json({
+        message: "Only pending orders can be canceled",
+      });
+    }
+
+    const updatedOrder = await prisma.order.update({
+      where: { id: parseInt(orderId) },
+      data: { status: "CANCELED" },
+    });
+
+    return res.status(200).json({
+      message: "Order canceled successfully",
+      order: updatedOrder,
+    });
+  } catch (error) {
+    console.error("Cancel Order Error:", error);
+    return res.status(500).json({ message: "Server error" });
+  }
+};

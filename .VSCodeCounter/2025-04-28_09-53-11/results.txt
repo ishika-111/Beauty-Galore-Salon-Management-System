@@ -1,0 +1,200 @@
+Date : 2025-04-28 09:53:11
+Directory : c:\Users\Acer\Desktop\FYP
+Total : 120 files,  22142 codes, 373 comments, 911 blanks, all 23426 lines
+
+Languages
++----------------+------------+------------+------------+------------+------------+
+| language       | files      | code       | comment    | blank      | total      |
++----------------+------------+------------+------------+------------+------------+
+| JSON           |          8 |     15,820 |          0 |         10 |     15,830 |
+| JavaScript JSX |         53 |      4,299 |         75 |        472 |      4,846 |
+| JavaScript     |         30 |      1,709 |        165 |        336 |      2,210 |
+| MS SQL         |         16 |        180 |        132 |         65 |        377 |
+| CSS            |          4 |         80 |          0 |         14 |         94 |
+| HTML           |          2 |         30 |          1 |          3 |         34 |
+| Markdown       |          2 |         12 |          0 |         10 |         22 |
+| Properties     |          1 |          8 |          0 |          1 |          9 |
+| XML            |          4 |          4 |          0 |          0 |          4 |
++----------------+------------+------------+------------+------------+------------+
+
+Directories
++----------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                           | files      | code       | comment    | blank      | total      |
++----------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                              |        120 |     22,142 |        373 |        911 |     23,426 |
+| . (Files)                                                                                                      |          3 |      2,793 |          0 |          3 |      2,796 |
+| Backend                                                                                                        |         38 |      1,764 |        293 |        387 |      2,444 |
+| Backend (Files)                                                                                                |          1 |         65 |          1 |         11 |         77 |
+| Backend\Middleware                                                                                             |          2 |         44 |          4 |         11 |         59 |
+| Backend\controller                                                                                             |         10 |      1,341 |        151 |        262 |      1,754 |
+| Backend\prisma                                                                                                 |         16 |        180 |        132 |         65 |        377 |
+| Backend\prisma\migrations                                                                                      |         16 |        180 |        132 |         65 |        377 |
+| Backend\prisma\migrations\20241124073320_init                                                                  |          1 |         36 |          7 |         11 |         54 |
+| Backend\prisma\migrations\20250126061735_init                                                                  |          1 |         35 |         29 |         13 |         77 |
+| Backend\prisma\migrations\20250303090504_add_appointment                                                       |          1 |          9 |          1 |          2 |         12 |
+| Backend\prisma\migrations\20250310071859_init                                                                  |          1 |          4 |         11 |          3 |         18 |
+| Backend\prisma\migrations\20250310073940_add_users                                                             |          1 |          8 |          2 |          3 |         13 |
+| Backend\prisma\migrations\20250311082231_update_appointment_model                                              |          1 |          1 |          1 |          1 |          3 |
+| Backend\prisma\migrations\20250328180423_add_product                                                           |          1 |         21 |         17 |          7 |         45 |
+| Backend\prisma\migrations\20250329104051_add_table                                                             |          1 |         24 |          6 |          8 |         38 |
+| Backend\prisma\migrations\20250407095913_init                                                                  |          1 |         20 |         17 |          5 |         42 |
+| Backend\prisma\migrations\20250415090841_add_payment_model                                                     |          1 |         13 |          2 |          3 |         18 |
+| Backend\prisma\migrations\20250415093151_update_payment_model                                                  |          1 |          2 |          8 |          2 |         12 |
+| Backend\prisma\migrations\20250422055957_fix_customer_userid                                                   |          1 |          3 |          9 |          3 |         15 |
+| Backend\prisma\migrations\20250423052128_add_created_at_to_appointment                                         |          1 |          1 |          1 |          1 |          3 |
+| Backend\prisma\migrations\20250423060212_updte_appoinment                                                      |          1 |          1 |          7 |          1 |          9 |
+| Backend\prisma\migrations\20250426102120_add_category_to_product                                               |          1 |          1 |          7 |          1 |          9 |
+| Backend\prisma\migrations\20250427073634_add_stock_field                                                       |          1 |          1 |          7 |          1 |          9 |
+| Backend\routes                                                                                                 |          9 |        134 |          5 |         38 |        177 |
+| BeautyGaloreSalon                                                                                              |         52 |     11,345 |         62 |        360 |     11,767 |
+| BeautyGaloreSalon (Files)                                                                                      |          8 |      7,569 |          3 |         15 |      7,587 |
+| BeautyGaloreSalon\public                                                                                       |          1 |          1 |          0 |          0 |          1 |
+| BeautyGaloreSalon\src                                                                                          |         43 |      3,775 |         59 |        345 |      4,179 |
+| BeautyGaloreSalon\src (Files)                                                                                  |          4 |        119 |          0 |         13 |        132 |
+| BeautyGaloreSalon\src\assets                                                                                   |          1 |          1 |          0 |          0 |          1 |
+| BeautyGaloreSalon\src\components                                                                               |         12 |      1,148 |         19 |        108 |      1,275 |
+| BeautyGaloreSalon\src\data                                                                                     |          2 |        601 |          0 |          4 |        605 |
+| BeautyGaloreSalon\src\layout                                                                                   |          4 |         40 |          0 |          9 |         49 |
+| BeautyGaloreSalon\src\pages                                                                                    |         20 |      1,866 |         40 |        211 |      2,117 |
+| BeautyGaloreSalon\src\pages (Files)                                                                            |          5 |        344 |         15 |         40 |        399 |
+| BeautyGaloreSalon\src\pages\cart                                                                               |          2 |        271 |          4 |         34 |        309 |
+| BeautyGaloreSalon\src\pages\customer                                                                           |          9 |      1,085 |         21 |        113 |      1,219 |
+| BeautyGaloreSalon\src\pages\payment                                                                            |          3 |        163 |          0 |         23 |        186 |
+| BeautyGaloreSalon\src\pages\staff                                                                              |          1 |          3 |          0 |          1 |          4 |
+| admin                                                                                                          |         27 |      6,240 |         18 |        161 |      6,419 |
+| admin (Files)                                                                                                  |          8 |      5,032 |          2 |         16 |      5,050 |
+| admin\layout                                                                                                   |          1 |         14 |          2 |          3 |         19 |
+| admin\public                                                                                                   |          1 |          1 |          0 |          0 |          1 |
+| admin\src                                                                                                      |         17 |      1,193 |         14 |        142 |      1,349 |
+| admin\src (Files)                                                                                              |          4 |         75 |          2 |         12 |         89 |
+| admin\src\assets                                                                                               |          1 |          1 |          0 |          0 |          1 |
+| admin\src\components                                                                                           |         10 |        977 |         10 |        112 |      1,099 |
+| admin\src\pages                                                                                                |          2 |        140 |          2 |         18 |        160 |
++----------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++----------------------------------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+
+| filename                                                                                                       | language       | code       | comment    | blank      | total      |
++----------------------------------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+
+| c:\Users\Acer\Desktop\FYP\.env                                                                                 | Properties     |          8 |          0 |          1 |          9 |
+| c:\Users\Acer\Desktop\FYP\Backend\Middleware\adminAuthmiddleware.js                                            | JavaScript     |         17 |          1 |          4 |         22 |
+| c:\Users\Acer\Desktop\FYP\Backend\Middleware\authMiddleware.js                                                 | JavaScript     |         27 |          3 |          7 |         37 |
+| c:\Users\Acer\Desktop\FYP\Backend\controller\appointmentController.js                                          | JavaScript     |        236 |         20 |         46 |        302 |
+| c:\Users\Acer\Desktop\FYP\Backend\controller\authController.js                                                 | JavaScript     |         31 |          2 |          9 |         42 |
+| c:\Users\Acer\Desktop\FYP\Backend\controller\cartController.js                                                 | JavaScript     |         92 |         19 |         24 |        135 |
+| c:\Users\Acer\Desktop\FYP\Backend\controller\customerController.js                                             | JavaScript     |         37 |          7 |         14 |         58 |
+| c:\Users\Acer\Desktop\FYP\Backend\controller\dashboardController.js                                            | JavaScript     |         41 |          0 |          4 |         45 |
+| c:\Users\Acer\Desktop\FYP\Backend\controller\orderController.js                                                | JavaScript     |        166 |         10 |         30 |        206 |
+| c:\Users\Acer\Desktop\FYP\Backend\controller\paymentController.js                                              | JavaScript     |        157 |          3 |         30 |        190 |
+| c:\Users\Acer\Desktop\FYP\Backend\controller\productController.js                                              | JavaScript     |        139 |         10 |         27 |        176 |
+| c:\Users\Acer\Desktop\FYP\Backend\controller\profileController.js                                              | JavaScript     |         87 |          7 |         21 |        115 |
+| c:\Users\Acer\Desktop\FYP\Backend\controller\userController.js                                                 | JavaScript     |        355 |         73 |         57 |        485 |
+| c:\Users\Acer\Desktop\FYP\Backend\prisma\migrations\20241124073320_init\migration.sql                          | MS SQL         |         36 |          7 |         11 |         54 |
+| c:\Users\Acer\Desktop\FYP\Backend\prisma\migrations\20250126061735_init\migration.sql                          | MS SQL         |         35 |         29 |         13 |         77 |
+| c:\Users\Acer\Desktop\FYP\Backend\prisma\migrations\20250303090504_add_appointment\migration.sql               | MS SQL         |          9 |          1 |          2 |         12 |
+| c:\Users\Acer\Desktop\FYP\Backend\prisma\migrations\20250310071859_init\migration.sql                          | MS SQL         |          4 |         11 |          3 |         18 |
+| c:\Users\Acer\Desktop\FYP\Backend\prisma\migrations\20250310073940_add_users\migration.sql                     | MS SQL         |          8 |          2 |          3 |         13 |
+| c:\Users\Acer\Desktop\FYP\Backend\prisma\migrations\20250311082231_update_appointment_model\migration.sql      | MS SQL         |          1 |          1 |          1 |          3 |
+| c:\Users\Acer\Desktop\FYP\Backend\prisma\migrations\20250328180423_add_product\migration.sql                   | MS SQL         |         21 |         17 |          7 |         45 |
+| c:\Users\Acer\Desktop\FYP\Backend\prisma\migrations\20250329104051_add_table\migration.sql                     | MS SQL         |         24 |          6 |          8 |         38 |
+| c:\Users\Acer\Desktop\FYP\Backend\prisma\migrations\20250407095913_init\migration.sql                          | MS SQL         |         20 |         17 |          5 |         42 |
+| c:\Users\Acer\Desktop\FYP\Backend\prisma\migrations\20250415090841_add_payment_model\migration.sql             | MS SQL         |         13 |          2 |          3 |         18 |
+| c:\Users\Acer\Desktop\FYP\Backend\prisma\migrations\20250415093151_update_payment_model\migration.sql          | MS SQL         |          2 |          8 |          2 |         12 |
+| c:\Users\Acer\Desktop\FYP\Backend\prisma\migrations\20250422055957_fix_customer_userid\migration.sql           | MS SQL         |          3 |          9 |          3 |         15 |
+| c:\Users\Acer\Desktop\FYP\Backend\prisma\migrations\20250423052128_add_created_at_to_appointment\migration.sql | MS SQL         |          1 |          1 |          1 |          3 |
+| c:\Users\Acer\Desktop\FYP\Backend\prisma\migrations\20250423060212_updte_appoinment\migration.sql              | MS SQL         |          1 |          7 |          1 |          9 |
+| c:\Users\Acer\Desktop\FYP\Backend\prisma\migrations\20250426102120_add_category_to_product\migration.sql       | MS SQL         |          1 |          7 |          1 |          9 |
+| c:\Users\Acer\Desktop\FYP\Backend\prisma\migrations\20250427073634_add_stock_field\migration.sql               | MS SQL         |          1 |          7 |          1 |          9 |
+| c:\Users\Acer\Desktop\FYP\Backend\routes\adminRoutes.js                                                        | JavaScript     |         26 |          0 |          4 |         30 |
+| c:\Users\Acer\Desktop\FYP\Backend\routes\appointmentRoutes.js                                                  | JavaScript     |         12 |          2 |          5 |         19 |
+| c:\Users\Acer\Desktop\FYP\Backend\routes\cartRoutes.js                                                         | JavaScript     |         14 |          0 |          4 |         18 |
+| c:\Users\Acer\Desktop\FYP\Backend\routes\dashboardRoutes.js                                                    | JavaScript     |          6 |          0 |          5 |         11 |
+| c:\Users\Acer\Desktop\FYP\Backend\routes\orderRoute.js                                                         | JavaScript     |         21 |          2 |          6 |         29 |
+| c:\Users\Acer\Desktop\FYP\Backend\routes\paymentRoutes.js                                                      | JavaScript     |         12 |          1 |          4 |         17 |
+| c:\Users\Acer\Desktop\FYP\Backend\routes\productRoutes.js                                                      | JavaScript     |          0 |          0 |          1 |          1 |
+| c:\Users\Acer\Desktop\FYP\Backend\routes\profileRoutes.js                                                      | JavaScript     |         20 |          0 |          5 |         25 |
+| c:\Users\Acer\Desktop\FYP\Backend\routes\userRoutes.js                                                         | JavaScript     |         23 |          0 |          4 |         27 |
+| c:\Users\Acer\Desktop\FYP\Backend\server.js                                                                    | JavaScript     |         65 |          1 |         11 |         77 |
+| c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\README.md                                                          | Markdown       |          5 |          0 |          4 |          9 |
+| c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\eslint.config.js                                                   | JavaScript     |         37 |          0 |          2 |         39 |
+| c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\index.html                                                         | HTML           |         17 |          1 |          2 |         20 |
+| c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\package-lock.json                                                  | JSON           |      7,423 |          0 |          1 |      7,424 |
+| c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\package.json                                                       | JSON           |         52 |          0 |          1 |         53 |
+| c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\postcss.config.js                                                  | JavaScript     |          6 |          0 |          1 |          7 |
+| c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\public\vite.svg                                                    | XML            |          1 |          0 |          0 |          1 |
+| c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\src\App.css                                                        | CSS            |         37 |          0 |          6 |         43 |
+| c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\src\App.jsx                                                        | JavaScript JSX |         67 |          0 |          4 |         71 |
+| c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\src\assets\react.svg                                               | XML            |          1 |          0 |          0 |          1 |
+| c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\src\components\AppoinmentCancel.jsx                                | JavaScript JSX |         83 |          6 |         15 |        104 |
+| c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\src\components\AppointmentList.jsx                                 | JavaScript JSX |        151 |          2 |         21 |        174 |
+| c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\src\components\CourseCard.jsx                                      | JavaScript JSX |         19 |          0 |          2 |         21 |
+| c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\src\components\CustomerNavbar.jsx                                  | JavaScript JSX |        118 |          1 |          8 |        127 |
+| c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\src\components\CustomerRegisterForm.jsx                            | JavaScript JSX |        157 |          1 |         12 |        170 |
+| c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\src\components\Footer.jsx                                          | JavaScript JSX |        112 |          2 |          8 |        122 |
+| c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\src\components\Hero.jsx                                            | JavaScript JSX |         88 |          2 |          5 |         95 |
+| c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\src\components\MyOrders.jsx                                        | JavaScript JSX |        109 |          2 |         12 |        123 |
+| c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\src\components\NavBar.jsx                                          | JavaScript JSX |         91 |          1 |          5 |         97 |
+| c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\src\components\ServiceCard.jsx                                     | JavaScript JSX |         35 |          1 |          2 |         38 |
+| c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\src\components\StaffRegisterForm.jsx                               | JavaScript JSX |        149 |          1 |         12 |        162 |
+| c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\src\components\Tab.jsx                                             | JavaScript JSX |         36 |          0 |          6 |         42 |
+| c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\src\data\course.json                                               | JSON           |         94 |          0 |          1 |         95 |
+| c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\src\data\service.json                                              | JSON           |        507 |          0 |          3 |        510 |
+| c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\src\index.css                                                      | CSS            |          3 |          0 |          1 |          4 |
+| c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\src\layout\AuthLayout.jsx                                          | JavaScript JSX |          8 |          0 |          2 |         10 |
+| c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\src\layout\CustomerLayout.jsx                                      | JavaScript JSX |         14 |          0 |          3 |         17 |
+| c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\src\layout\MainLayout.jsx                                          | JavaScript JSX |         14 |          0 |          2 |         16 |
+| c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\src\layout\StaffLayout.jsx                                         | JavaScript JSX |          4 |          0 |          2 |          6 |
+| c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\src\main.jsx                                                       | JavaScript JSX |         12 |          0 |          2 |         14 |
+| c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\src\pages\EmailVerifyPage.jsx                                      | JavaScript JSX |         39 |          5 |          5 |         49 |
+| c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\src\pages\ForgotPasswordPage.jsx                                   | JavaScript JSX |         67 |          0 |          5 |         72 |
+| c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\src\pages\LoginPage.jsx                                            | JavaScript JSX |        157 |          8 |         22 |        187 |
+| c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\src\pages\ResetPasswordPage.jsx                                    | JavaScript JSX |         71 |          0 |          5 |         76 |
+| c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\src\pages\SignUpPage.jsx                                           | JavaScript JSX |         10 |          2 |          3 |         15 |
+| c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\src\pages\cart\CartPage.jsx                                        | JavaScript JSX |        164 |          1 |         20 |        185 |
+| c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\src\pages\cart\OrderForm.jsx                                       | JavaScript JSX |        107 |          3 |         14 |        124 |
+| c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\src\pages\customer\AboutUsPage.jsx                                 | JavaScript JSX |        103 |          0 |          4 |        107 |
+| c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\src\pages\customer\BookNowPage.jsx                                 | JavaScript JSX |        176 |          2 |         16 |        194 |
+| c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\src\pages\customer\CartPage.jsx                                    | JavaScript JSX |        164 |          0 |         20 |        184 |
+| c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\src\pages\customer\CoursePage.jsx                                  | JavaScript JSX |         81 |          1 |          5 |         87 |
+| c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\src\pages\customer\HomePage.jsx                                    | JavaScript JSX |          8 |          0 |          2 |         10 |
+| c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\src\pages\customer\ProductPage.jsx                                 | JavaScript JSX |        207 |         12 |         29 |        248 |
+| c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\src\pages\customer\Profile.jsx                                     | JavaScript JSX |        176 |          3 |         21 |        200 |
+| c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\src\pages\customer\ServiceDetails.jsx                              | JavaScript JSX |        115 |          0 |          9 |        124 |
+| c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\src\pages\customer\ServicePage.jsx                                 | JavaScript JSX |         55 |          3 |          7 |         65 |
+| c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\src\pages\payment\Failure.jsx                                      | JavaScript JSX |          3 |          0 |          1 |          4 |
+| c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\src\pages\payment\Payment.jsx                                      | JavaScript JSX |         51 |          0 |          5 |         56 |
+| c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\src\pages\payment\Success.jsx                                      | JavaScript JSX |        109 |          0 |         17 |        126 |
+| c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\src\pages\staff\StaffHomePage.jsx                                  | JavaScript JSX |          3 |          0 |          1 |          4 |
+| c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\tailwind.config.js                                                 | JavaScript     |         15 |          1 |          2 |         18 |
+| c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\vite.config.js                                                     | JavaScript     |         14 |          1 |          2 |         17 |
+| c:\Users\Acer\Desktop\FYP\admin\README.md                                                                      | Markdown       |          7 |          0 |          6 |         13 |
+| c:\Users\Acer\Desktop\FYP\admin\eslint.config.js                                                               | JavaScript     |         32 |          0 |          2 |         34 |
+| c:\Users\Acer\Desktop\FYP\admin\index.html                                                                     | HTML           |         13 |          0 |          1 |         14 |
+| c:\Users\Acer\Desktop\FYP\admin\layout\DashboardLayout.jsx                                                     | JavaScript JSX |         14 |          2 |          3 |         19 |
+| c:\Users\Acer\Desktop\FYP\admin\package-lock.json                                                              | JSON           |      4,921 |          0 |          1 |      4,922 |
+| c:\Users\Acer\Desktop\FYP\admin\package.json                                                                   | JSON           |         38 |          0 |          1 |         39 |
+| c:\Users\Acer\Desktop\FYP\admin\postcss.config.js                                                              | JavaScript     |          6 |          0 |          1 |          7 |
+| c:\Users\Acer\Desktop\FYP\admin\public\vite.svg                                                                | XML            |          1 |          0 |          0 |          1 |
+| c:\Users\Acer\Desktop\FYP\admin\src\App.css                                                                    | CSS            |         37 |          0 |          6 |         43 |
+| c:\Users\Acer\Desktop\FYP\admin\src\App.jsx                                                                    | JavaScript JSX |         23 |          2 |          3 |         28 |
+| c:\Users\Acer\Desktop\FYP\admin\src\assets\react.svg                                                           | XML            |          1 |          0 |          0 |          1 |
+| c:\Users\Acer\Desktop\FYP\admin\src\components\AddProduct.jsx                                                  | JavaScript JSX |        176 |          0 |         23 |        199 |
+| c:\Users\Acer\Desktop\FYP\admin\src\components\AllAppoinmentList.jsx                                           | JavaScript JSX |        134 |          2 |         17 |        153 |
+| c:\Users\Acer\Desktop\FYP\admin\src\components\Navbar.jsx                                                      | JavaScript JSX |         38 |          0 |          4 |         42 |
+| c:\Users\Acer\Desktop\FYP\admin\src\components\OrderChart.jsx                                                  | JavaScript JSX |         29 |          0 |          3 |         32 |
+| c:\Users\Acer\Desktop\FYP\admin\src\components\Orderlist.jsx                                                   | JavaScript JSX |        153 |          0 |         15 |        168 |
+| c:\Users\Acer\Desktop\FYP\admin\src\components\ProductList.jsx                                                 | JavaScript JSX |        302 |          4 |         33 |        339 |
+| c:\Users\Acer\Desktop\FYP\admin\src\components\RecentOrder.jsx                                                 | JavaScript JSX |         18 |          0 |          2 |         20 |
+| c:\Users\Acer\Desktop\FYP\admin\src\components\SideNavbar.jsx                                                  | JavaScript JSX |         62 |          4 |          6 |         72 |
+| c:\Users\Acer\Desktop\FYP\admin\src\components\StatCard.jsx                                                    | JavaScript JSX |          7 |          0 |          2 |          9 |
+| c:\Users\Acer\Desktop\FYP\admin\src\components\UpdateOrder.jsx                                                 | JavaScript JSX |         58 |          0 |          7 |         65 |
+| c:\Users\Acer\Desktop\FYP\admin\src\index.css                                                                  | CSS            |          3 |          0 |          1 |          4 |
+| c:\Users\Acer\Desktop\FYP\admin\src\main.jsx                                                                   | JavaScript JSX |         12 |          0 |          2 |         14 |
+| c:\Users\Acer\Desktop\FYP\admin\src\pages\Dashboard.jsx                                                        | JavaScript JSX |         71 |          0 |         10 |         81 |
+| c:\Users\Acer\Desktop\FYP\admin\src\pages\Login.jsx                                                            | JavaScript JSX |         69 |          2 |          8 |         79 |
+| c:\Users\Acer\Desktop\FYP\admin\tailwind.config.js                                                             | JavaScript     |         10 |          1 |          2 |         13 |
+| c:\Users\Acer\Desktop\FYP\admin\vite.config.js                                                                 | JavaScript     |          5 |          1 |          2 |          8 |
+| c:\Users\Acer\Desktop\FYP\package-lock.json                                                                    | JSON           |      2,742 |          0 |          1 |      2,743 |
+| c:\Users\Acer\Desktop\FYP\package.json                                                                         | JSON           |         43 |          0 |          1 |         44 |
+| Total                                                                                                          |                |     22,142 |        373 |        911 |     23,426 |
++----------------------------------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+

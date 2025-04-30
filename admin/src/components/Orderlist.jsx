@@ -23,7 +23,7 @@ const Orderlist = () => {
       const response = await axios.get(
         "http://localhost:5000/api/admin/order/orders",
         {
-          headers: { Authorization: `Bearer ${token} ` },
+          headers: { Authorization: `Bearer ${token}` },
         }
       );
 
@@ -55,10 +55,10 @@ const Orderlist = () => {
 
     try {
       await axios.put(
-        `http://localhost:5000/api/admin/orders/${selectedOrder.id}/status`,
+        `http://localhost:5000/api/admin/order/orders/${selectedOrder.id}/status`,
         { status: updatedStatus },
         {
-          headers: { Authorization: `Bearer ${token} ` },
+          headers: { Authorization: `Bearer ${token}` },
         }
       );
       setEditModalOpen(false);

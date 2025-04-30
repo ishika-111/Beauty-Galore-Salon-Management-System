@@ -1,24 +1,9 @@
 import CustomerRegisterForm from "./CustomerRegisterForm";
-import CustomerLoginForm from "./CustomerRegisterForm";
-import StaffRegisterForm from "./StaffRegisterForm";
+// Removed StaffRegisterForm import
 
 export default function Tab() {
   return (
-    <div role="tablist" className="tabs tabs-lifted">
-      <input
-        type="radio"
-        name="my_tabs_2"
-        role="tab"
-        className="tab"
-        aria-label="Staff"
-      />
-      <div
-        role="tabpanel"
-        className="tab-content bg-base-100 border-base-300 rounded-box p-6"
-      >
-        <StaffRegisterForm />
-      </div>
-
+    <div role="tablist" className="tabs tabs-lifted mt-2 mb-2">
       <input
         type="radio"
         name="my_tabs_2"
@@ -33,9 +18,6 @@ export default function Tab() {
       >
         <CustomerRegisterForm />
       </div>
-
-
-      
     </div>
   );
 }

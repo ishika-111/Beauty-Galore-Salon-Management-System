@@ -1,0 +1,39 @@
+# Diff Summary
+
+Date : 2025-04-28 09:53:11
+
+Directory c:\\Users\\Acer\\Desktop\\FYP
+
+Total : 14 files,  285 codes, 18 comments, 36 blanks, all 339 lines
+
+[Summary](results.md) / [Details](details.md) / Diff Summary / [Diff Details](diff-details.md)
+
+## Languages
+| language | files | code | comment | blank | total |
+| :--- | ---: | ---: | ---: | ---: | ---: |
+| JavaScript JSX | 6 | 226 | -3 | 31 | 254 |
+| JavaScript | 4 | 45 | 7 | 3 | 55 |
+| JSON | 2 | 12 | 0 | 0 | 12 |
+| MS SQL | 2 | 2 | 14 | 2 | 18 |
+
+## Directories
+| path | files | code | comment | blank | total |
+| :--- | ---: | ---: | ---: | ---: | ---: |
+| . | 14 | 285 | 18 | 36 | 339 |
+| Backend | 5 | 44 | 21 | 4 | 69 |
+| Backend\\controller | 3 | 42 | 7 | 2 | 51 |
+| Backend\\prisma | 2 | 2 | 14 | 2 | 18 |
+| Backend\\prisma\\migrations | 2 | 2 | 14 | 2 | 18 |
+| Backend\\prisma\\migrations\\20250426102120_add_category_to_product | 1 | 1 | 7 | 1 | 9 |
+| Backend\\prisma\\migrations\\20250427073634_add_stock_field | 1 | 1 | 7 | 1 | 9 |
+| BeautyGaloreSalon | 3 | 150 | 13 | 20 | 183 |
+| BeautyGaloreSalon\\src | 3 | 150 | 13 | 20 | 183 |
+| BeautyGaloreSalon\\src\\components | 1 | 16 | 1 | 0 | 17 |
+| BeautyGaloreSalon\\src\\pages | 2 | 134 | 12 | 20 | 166 |
+| BeautyGaloreSalon\\src\\pages\\customer | 2 | 134 | 12 | 20 | 166 |
+| admin | 6 | 91 | -16 | 12 | 87 |
+| admin (Files) | 3 | 15 | 0 | 1 | 16 |
+| admin\\src | 3 | 76 | -16 | 11 | 71 |
+| admin\\src\\components | 3 | 76 | -16 | 11 | 71 |
+
+[Summary](results.md) / [Details](details.md) / Diff Summary / [Diff Details](diff-details.md)

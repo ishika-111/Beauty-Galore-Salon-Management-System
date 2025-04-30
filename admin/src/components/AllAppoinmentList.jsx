@@ -4,17 +4,15 @@ import toast from "react-hot-toast";
 
 const AllAppointmentList = () => {
   const [appointments, setAppointments] = useState([]);
+  const [filteredAppointments, setFilteredAppointments] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [filterDate, setFilterDate] = useState("");
 
   useEffect(() => {
     const fetchAppointments = async () => {
       const token = localStorage.getItem("token");
-      console.log("Token:", token);
-
-      if (!token) {
-        return toast.error("Please log in first");
-      }
+      if (!token) return toast.error("Please log in first");
 
       try {
         const res = await axios.get(
@@ -28,6 +26,7 @@ const AllAppointmentList = () => {
           setError(res.data.error);
         } else {
           setAppointments(res.data.appointments);
+          setFilteredAppointments(res.data.appointments); // initially show all
         }
 
         setLoading(false);
@@ -44,10 +43,7 @@ const AllAppointmentList = () => {
   // Function to confirm the appointment
   const confirmAppointment = async (appointmentId) => {
     const token = localStorage.getItem("token");
-
-    if (!token) {
-      return toast.error("Please log in first");
-    }
+    if (!token) return toast.error("Please log in first");
 
     try {
       const res = await axios.put(
@@ -61,9 +57,17 @@ const AllAppointmentList = () => {
       );
 
       toast.success(res.data.message);
-      // Refresh the appointments list after confirming
-      setAppointments((prevAppointments) =>
-        prevAppointments.map((appointment) =>
+      setAppointments((prev) =>
+        prev.map((appointment) =>
+          appointment.id === appointmentId
+            ? { ...appointment, status: "Confirmed" }
+            : appointment
+        )
+      );
+
+      // Also update filtered list if filter is active
+      setFilteredAppointments((prev) =>
+        prev.map((appointment) =>
           appointment.id === appointmentId
             ? { ...appointment, status: "Confirmed" }
             : appointment
@@ -75,11 +79,35 @@ const AllAppointmentList = () => {
     }
   };
 
+  // Filter handler
+  const handleDateChange = (e) => {
+    const selectedDate = e.target.value;
+    setFilterDate(selectedDate);
+
+    if (!selectedDate) {
+      setFilteredAppointments(appointments); // Reset to all
+    } else {
+      const filtered = appointments.filter(
+        (appointment) => appointment.date === selectedDate
+      );
+      setFilteredAppointments(filtered);
+    }
+  };
+
   return (
     <div className="max-w-5xl mx-auto px-4 py-8">
-      <h2 className="text-2xl font-bold mb-6 text-center text-lime-700">
+      <h2 className="text-2xl font-bold mb-4 text-center text-lime-700">
         All Appointments
       </h2>
+
+      <div className="flex justify-center mb-6">
+        <input
+          type="date"
+          value={filterDate}
+          onChange={handleDateChange}
+          className="border rounded-lg px-4 py-2 text-sm"
+        />
+      </div>
 
       {loading && (
         <p className="text-center text-blue-500 font-medium">
@@ -87,12 +115,11 @@ const AllAppointmentList = () => {
         </p>
       )}
       {error && <p className="text-center text-red-500">{error}</p>}
-
-      {!loading && !error && appointments.length === 0 && (
+      {!loading && !error && filteredAppointments.length === 0 && (
         <p className="text-center text-gray-600">No appointments found.</p>
       )}
 
-      {!loading && !error && appointments.length > 0 && (
+      {!loading && !error && filteredAppointments.length > 0 && (
         <div className="overflow-x-auto">
           <table className="min-w-full bg-white rounded-lg shadow border border-gray-200">
             <thead className="bg-lime-100 text-lime-800">
@@ -115,7 +142,7 @@ const AllAppointmentList = () => {
               </tr>
             </thead>
             <tbody>
-              {appointments.map((appointment, index) => (
+              {filteredAppointments.map((appointment, index) => (
                 <tr
                   key={appointment.id}
                   className={`${

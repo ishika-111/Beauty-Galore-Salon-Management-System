@@ -55,20 +55,34 @@ const createProductItem = async (req, res) => {
     console.log("Request Body:", req.body); // Log form data
     console.log("Uploaded File:", req.file); // Log file details
 
-    const { name, description, price } = req.body;
+    const { name, description, price, category, stock } = req.body;
+
     // Convert price to Float
     const priceFloat = parseFloat(price);
+    const stockInt = parseInt(stock); // <-- Convert stock to integer
 
     // Check if the price is valid
     if (isNaN(priceFloat)) {
       return res.status(400).json({ message: "Invalid price value" });
     }
+
+    if (isNaN(stockInt) || stockInt < 0) {
+      return res.status(400).json({ message: "Invalid stock value" });
+    }
     const imageUrl = req.file ? `/uploads/${req.file.filename}` : null; // Get the image URL
 
     try {
       const productItem = await prisma.product.create({
-        data: { name, description, price: priceFloat, imageUrl },
+        data: {
+          name,
+          description,
+          price: priceFloat,
+          imageUrl,
+          category,
+          stock: stockInt,
+        },
       });
+
       res.status(201).json({ message: "Product item created", productItem });
     } catch (error) {
       res
@@ -92,7 +106,7 @@ const updateProductItem = async (req, res) => {
     }
 
     const { id } = req.params;
-    const { name, description, price, available } = req.body;
+    const { name, description, price, available, stock, category } = req.body;
 
     let imageUrl = null;
     if (req.file) {
@@ -105,8 +119,9 @@ const updateProductItem = async (req, res) => {
         data: {
           name,
           description,
-          price: parseFloat(price), // Ensure price is a float
-
+          price: parseFloat(price),
+          stock: parseInt(stock), // Ensure price is a float
+          category,
           available: available === "true", // Convert to boolean
           ...(imageUrl && { imageUrl }), // Update image only if a new one is uploaded
         },

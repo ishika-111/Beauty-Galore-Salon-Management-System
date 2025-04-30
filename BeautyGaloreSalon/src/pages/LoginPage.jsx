@@ -25,7 +25,7 @@ export default function LoginPage() {
   const [userInput, setUserInput] = useState({
     email: "",
     password: "",
-    role: "USER", // Default value, can be "STAFF" or "CUSTOMER"
+    role: "USER",
   });
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
@@ -84,7 +84,8 @@ export default function LoginPage() {
     } catch (error) {
       // Show error toast if login failed
       toast.error(
-        error.response?.data?.error || "Login failed! Please try again."
+        error.response?.data?.error ||
+          "Login failed! Invalid credentials! Please try again."
       );
       setErrors({ general: error.response?.data?.error || "Login failed!" });
       console.error(error);

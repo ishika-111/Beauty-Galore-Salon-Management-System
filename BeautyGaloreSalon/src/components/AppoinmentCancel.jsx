@@ -86,9 +86,13 @@ const AppointmentCancel = ({
         </button>
       ) : (
         <p className="text-gray-500 mt-2">
-          {status === "Cancelled"
-            ? "This appointment has been canceled"
-            : "You can only cancel appointments within 2 hours of booking."}
+          {status === "Cancelled" ? (
+            "This appointment has been canceled"
+          ) : (
+            <span className="text-red-500">
+              You can only cancel appointments within 2 hours of booking.
+            </span>
+          )}
         </p>
       )}
 

@@ -1,6 +1,7 @@
 import express from "express";
 
 import {
+  cancelOrder,
   getAllOrders,
   getCustomerOrders,
   placeOrder,
@@ -19,6 +20,7 @@ orderRouter.put(
   updateOrderStatus
 );
 orderRouter.get("/my-orders", authenticateUser, getCustomerOrders);
+orderRouter.put("/cancel/:orderId", authenticateUser, cancelOrder);
 
 // orderRouter.put("/update/:cartItemId", authenticateUser, updateCartItem);
 

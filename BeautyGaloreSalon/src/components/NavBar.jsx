@@ -79,13 +79,17 @@ export default function NavBar() {
           </button>
         </Link>
         <button
-          className="bg-lime-700 rounded p-2 font-bold text-white"
+          className={`rounded p-2 font-bold text-white ${
+            isActive("/login") ? "bg-lime-500" : "bg-lime-700"
+          }`}
           onClick={handleLoginClick}
         >
           Login
         </button>
         <button
-          className="bg-lime-700 rounded p-2 font-bold text-white"
+          className={`rounded p-2 font-bold text-white ${
+            isActive("/signup") ? "bg-lime-600" : "bg-lime-700"
+          }`}
           onClick={handleSignUpClick}
         >
           SignUp

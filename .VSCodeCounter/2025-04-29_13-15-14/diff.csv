@@ -1,0 +1,24 @@
+"filename", "language", "JSON", "JavaScript", "JavaScript JSX", "comment", "blank", "total"
+"c:\Users\Acer\Desktop\FYP\Backend\controller\appointmentController.js", "JavaScript", 0, 5, 0, 0, 0, 5
+"c:\Users\Acer\Desktop\FYP\Backend\routes\adminRoutes.js", "JavaScript", 0, 0, 0, 3, 2, 5
+"c:\Users\Acer\Desktop\FYP\Backend\routes\cartRoutes.js", "JavaScript", 0, 0, 0, 0, 1, 1
+"c:\Users\Acer\Desktop\FYP\Backend\routes\profileRoutes.js", "JavaScript", 0, 0, 0, 0, 1, 1
+"c:\Users\Acer\Desktop\FYP\Backend\server.js", "JavaScript", 0, 0, 0, 0, 1, 1
+"c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\src\App.jsx", "JavaScript JSX", 0, 0, 3, 0, 0, 3
+"c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\src\components\AppoinmentCancel.jsx", "JavaScript JSX", 0, 0, 4, 0, 0, 4
+"c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\src\components\CustomerNavbar.jsx", "JavaScript JSX", 0, 0, 5, 1, 1, 7
+"c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\src\components\NavBar.jsx", "JavaScript JSX", 0, 0, 4, 0, 0, 4
+"c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\src\components\Tab.jsx", "JavaScript JSX", 0, 0, -15, 1, -4, -18
+"c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\src\pages\EmailVerifyPage.jsx", "JavaScript JSX", 0, 0, 22, 1, 1, 24
+"c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\src\pages\LoginPage.jsx", "JavaScript JSX", 0, 0, 1, 0, 0, 1
+"c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\src\pages\cart\CartPage.jsx", "JavaScript JSX", 0, 0, 48, 2, 5, 55
+"c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\src\pages\cart\OrderForm.jsx", "JavaScript JSX", 0, 0, 1, 0, 0, 1
+"c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\src\pages\customer\CartPage.jsx", "JavaScript JSX", 0, 0, -164, 0, -20, -184
+"c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\src\pages\customer\ProductPage.jsx", "JavaScript JSX", 0, 0, -19, -2, -5, -26
+"c:\Users\Acer\Desktop\FYP\BeautyGaloreSalon\tailwind.config.js", "JavaScript", 0, 17, 0, 0, 0, 17
+"c:\Users\Acer\Desktop\FYP\admin\package-lock.json", "JSON", 11, 0, 0, 0, 0, 11
+"c:\Users\Acer\Desktop\FYP\admin\package.json", "JSON", 1, 0, 0, 0, 0, 1
+"c:\Users\Acer\Desktop\FYP\admin\src\components\ProductList.jsx", "JavaScript JSX", 0, 0, -87, 1, -4, -90
+"c:\Users\Acer\Desktop\FYP\package-lock.json", "JSON", 11, 0, 0, 0, 0, 11
+"c:\Users\Acer\Desktop\FYP\package.json", "JSON", 1, 0, 0, 0, 0, 1
+"Total", "-", 24, 22, -197, 7, -21, -165

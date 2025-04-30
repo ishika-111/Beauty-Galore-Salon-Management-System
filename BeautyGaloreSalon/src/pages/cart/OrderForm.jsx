@@ -98,12 +98,13 @@ const OrderForm = ({ cartItems }) => {
           onChange={(e) => setPaymentMethod(e.target.value)}
           className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-lime-500"
         >
-          <option value="CARD">Cash on Delivery</option>
+          <option value="COD">Cash on Delivery</option>
           <option value="Esewa">eSewa</option>
         </select>
       </div>
 
       <button
+        to="/my-orders"
         onClick={handlePlaceOrder}
         className="bg-lime-800 text-white text-lg font-semibold px-6 py-3 rounded-lg w-full hover:bg-lime-700 transition duration-300"
       >

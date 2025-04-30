@@ -1,3 +1,4 @@
+import nodemailer from "nodemailer";
 import { PrismaClient } from "@prisma/client";
 import { DateTime } from "luxon";
 
@@ -38,6 +39,44 @@ const isAvailableTimeSlot = async (appointmentDate, requestedTime) => {
   });
 
   return !existingAppointment;
+};
+
+// Helper function to send confirmation email
+const sendConfirmationEmail = async (name, email, appointmentDetails) => {
+  try {
+    // Create a transporter object using the default SMTP transport
+    const transporter = nodemailer.createTransport({
+      service: "gmail", // Use your email provider service (e.g., Gmail, Outlook, etc.)
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+      },
+    });
+
+    const mailOptions = {
+      from: "your-email@gmail.com", // Sender address
+      to: email, // Receiver address (customer's email)
+      subject: "Appointment Booked Successfully", // Email subject
+      html: `
+        <h1>Appointment Booked.</h1>
+        <p>Dear ${name},</p>
+        <p>Your appointment has been successfully booked with the following details:</p>
+        <ul>
+          <li>Date: ${appointmentDetails.date}</li>
+          <li>Time: ${appointmentDetails.time}</li>
+          <li>Service: ${appointmentDetails.service}</li>
+        </ul>
+        <p>Thank you for choosing us!</p>
+        <p>Best regards, <br>Beauty Galore Salon</p>
+      `, // HTML content of the email
+    };
+
+    // Send email
+    await transporter.sendMail(mailOptions);
+    console.log("Confirmation email sent successfully");
+  } catch (error) {
+    console.error("Error sending confirmation email:", error);
+  }
 };
 
 // ✅ Create Appointment (requires authentication)
@@ -105,6 +144,13 @@ const createAppointment = async (req, res) => {
       },
     });
 
+    // Send the confirmation email to the customer
+    await sendConfirmationEmail(name, email, {
+      date: appointmentDate.toISODate(),
+      time: requestedTime,
+      service,
+    });
+
     res
       .status(201)
       .json({ message: "Appointment booked successfully!", appointment });
@@ -117,8 +163,6 @@ const createAppointment = async (req, res) => {
 };
 
 // ✅ Cancel Appointment (requires authentication)
-// ✅ Cancel Appointment (within 2 hours of booking)
-
 const cancelAppointment = async (req, res) => {
   try {
     const { id } = req.params;
@@ -136,6 +180,11 @@ const cancelAppointment = async (req, res) => {
       return res
         .status(403)
         .json({ error: "You can only cancel your own appointments" });
+    }
+    if (appointment.status !== "Pending") {
+      return res
+        .status(400)
+        .json({ error: "Only pending appointments can be cancelled" });
     }
 
     const createdAt = DateTime.fromJSDate(appointment.createdAt);
@@ -163,10 +212,11 @@ const cancelAppointment = async (req, res) => {
   }
 };
 
+// ✅ Get User's Appointments
 const getUserAppointments = async (req, res) => {
   try {
     const userId = req.user?.id;
-    console.log("yserID", userId);
+    console.log("UserID", userId);
     if (!userId) {
       return res.status(400).json({ error: "User not authenticated" });
     }
@@ -186,6 +236,7 @@ const getUserAppointments = async (req, res) => {
   }
 };
 
+// ✅ Get All Appointments (Admin)
 const getAllUserAppointments = async (req, res) => {
   try {
     if (!req.adminId) {
@@ -205,6 +256,7 @@ const getAllUserAppointments = async (req, res) => {
   }
 };
 
+// ✅ Confirm Appointment (Admin)
 const confirmAppointment = async (req, res) => {
   try {
     const { id } = req.params;

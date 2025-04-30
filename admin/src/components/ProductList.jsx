@@ -5,19 +5,34 @@ import { FaEdit, FaTrash } from "react-icons/fa";
 const ProductList = () => {
   const [productItems, setProductItems] = useState([]);
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [editItem, setEditItem] = useState({
     id: "",
     name: "",
     description: "",
     price: "",
-    imageUrl: "", // Store URL for preview
+    category: "",
+    imageUrl: "",
+    stock: "",
   });
-  const [imageFile, setImageFile] = useState(null); // Store file separately
+  const [imageFile, setImageFile] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [searchTerm, setSearchTerm] = useState("");
+  const itemsPerPage = 5;
 
   useEffect(() => {
     fetchProductItems();
   }, []);
+
+  useEffect(() => {
+    if (success) {
+      const timer = setTimeout(() => {
+        setSuccess("");
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [success]);
 
   const fetchProductItems = async () => {
     const token = localStorage.getItem("token");
@@ -51,17 +66,19 @@ const ProductList = () => {
       await axios.delete(`http://localhost:5000/api/admin/product/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
-
+      setSuccess("Item deleted successfully.");
+      setError("");
       fetchProductItems();
     } catch (err) {
-      console.error("Error deleting Product item:", err);
-      setError("Failed to delete Product item.");
+      console.error("Error deleting product item:", err);
+      setError("Failed to delete product item.");
+      setSuccess("");
     }
   };
 
   const handleEdit = (item) => {
     setEditItem(item);
-    setImageFile(null); // Reset file input
+    setImageFile(null);
     setEditModalOpen(true);
   };
 
@@ -81,10 +98,10 @@ const ProductList = () => {
     formData.append("name", editItem.name);
     formData.append("description", editItem.description);
     formData.append("price", parseFloat(editItem.price));
-    // formData.append("category", editItem.category);
-
+    formData.append("stock", parseInt(editItem.stock));
+    formData.append("category", editItem.category);
     if (imageFile) {
-      formData.append("image", imageFile); // Append the file if new image selected
+      formData.append("image", imageFile);
     }
 
     try {
@@ -98,7 +115,6 @@ const ProductList = () => {
           },
         }
       );
-
       setEditModalOpen(false);
       fetchProductItems();
     } catch (err) {
@@ -107,13 +123,36 @@ const ProductList = () => {
     }
   };
 
+  // Filtered and paginated items
+  const filteredItems = productItems.filter((item) =>
+    item.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = filteredItems.slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages = Math.ceil(filteredItems.length / itemsPerPage);
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 ml-40">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-4">
       <div className="bg-white p-9 rounded-lg shadow-md w-full max-w-5xl">
         <h1 className="text-2xl font-bold mb-6 text-center">Product Items</h1>
 
-        {error && <p className="text-red-500 mb-4">{error}</p>}
+        {/* Search */}
+        <div className="mb-4 flex justify-center">
+          <input
+            type="text"
+            placeholder="Search by name..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="border border-gray-300 px-4 py-2 rounded-md w-full max-w-sm"
+          />
+        </div>
 
+        {/* Error & Success Messages */}
+        {error && <p className="text-red-500 mb-4">{error}</p>}
+        {success && <p className="text-green-500 mb-4">{success}</p>}
+
+        {/* Table */}
         <table className="min-w-full table-auto border-collapse border border-gray-200">
           <thead>
             <tr className="bg-gray-100">
@@ -121,12 +160,12 @@ const ProductList = () => {
               <th className="px-4 py-2 text-left">Image</th>
               <th className="px-4 py-2 text-left">Description</th>
               <th className="px-4 py-2 text-left">Price</th>
-              {/* <th className="px-4 py-2 text-left">Category</th> */}
+              <th className="px-4 py-2 text-left">Stock</th>
               <th className="px-4 py-2 text-left">Actions</th>
             </tr>
           </thead>
           <tbody>
-            {productItems.map((item) => (
+            {currentItems.map((item) => (
               <tr key={item.id} className="border-t border-gray-200">
                 <td className="px-4 py-2">{item.name}</td>
                 <td className="px-4 py-2">
@@ -142,7 +181,7 @@ const ProductList = () => {
                 </td>
                 <td className="px-4 py-2">{item.description}</td>
                 <td className="px-4 py-2">Rs.{item.price}</td>
-                {/* <td className="px-4 py-2 capitalize">{item.category}</td> */}
+                <td className="px-4 py-2">{item.stock}</td>
                 <td className="px-4 py-2">
                   <button
                     onClick={() => handleEdit(item)}
@@ -161,6 +200,29 @@ const ProductList = () => {
             ))}
           </tbody>
         </table>
+
+        {/* Pagination */}
+        <div className="flex justify-center items-center mt-6 space-x-2">
+          <button
+            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+            disabled={currentPage === 1}
+            className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400 disabled:opacity-50"
+          >
+            Prev
+          </button>
+          <span className="px-4 py-2 font-semibold">
+            {currentPage} / {totalPages}
+          </span>
+          <button
+            onClick={() =>
+              setCurrentPage((prev) => (prev < totalPages ? prev + 1 : prev))
+            }
+            disabled={currentPage === totalPages}
+            className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400 disabled:opacity-50"
+          >
+            Next
+          </button>
+        </div>
       </div>
 
       {/* Edit Modal */}
@@ -169,103 +231,63 @@ const ProductList = () => {
           <div className="bg-white p-8 rounded-lg shadow-lg w-96">
             <h2 className="text-xl font-bold mb-4">Edit Product Item</h2>
             <form onSubmit={handleUpdate}>
-              <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  value={editItem.name}
-                  onChange={(e) =>
-                    setEditItem({ ...editItem, name: e.target.value })
-                  }
-                  required
-                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
-                />
-              </div>
-              <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700">
-                  Description
-                </label>
-                <input
-                  type="text"
-                  value={editItem.description}
-                  onChange={(e) =>
-                    setEditItem({ ...editItem, description: e.target.value })
-                  }
-                  required
-                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-                />
-              </div>
-
-              <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700">
-                  Price (Rs.)
-                </label>
-                <input
-                  type="number"
-                  value={editItem.price}
-                  onChange={(e) =>
-                    setEditItem({ ...editItem, price: e.target.value })
-                  }
-                  required
-                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-                />
-              </div>
-
-              {/* <div className="mb-6">
-                <label className="block text-sm font-medium text-gray-700">
-                  Category
-                </label>
-                <select
-                  value={editItem.category}
-                  onChange={(e) =>
-                    setEditItem({ ...editItem, category: e.target.value })
-                  }
-                  required
-                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-                >
-                  <option value="APPETIZER">Appetizer</option>
-                  <option value="MAIN_COURSE">Main Course</option>
-                  <option value="DESSERT">Dessert</option>
-                  <option value="BEVERAGE">Beverage</option>
-                </select>
-              </div> */}
-
-              {/* Display current image */}
-              <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700">
-                  Current Image
-                </label>
-                {editItem.imageUrl && !imageFile && (
-                  <img
-                    src={`http://localhost:5000${editItem.imageUrl}`}
-                    alt="Current product item"
-                    className="w-20 h-20 object-cover rounded mt-2"
-                  />
-                )}
-              </div>
-
-              {/* File Upload */}
-              <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700">
-                  Upload New Image
-                </label>
-                <input
-                  type="file"
-                  onChange={handleImageChange}
-                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
-                />
-              </div>
-
+              <input
+                type="text"
+                placeholder="Name"
+                value={editItem.name}
+                onChange={(e) =>
+                  setEditItem({ ...editItem, name: e.target.value })
+                }
+                className="w-full mb-2 px-3 py-2 border border-gray-300 rounded"
+              />
+              <input
+                type="text"
+                placeholder="Description"
+                value={editItem.description}
+                onChange={(e) =>
+                  setEditItem({ ...editItem, description: e.target.value })
+                }
+                className="w-full mb-2 px-3 py-2 border border-gray-300 rounded"
+              />
+              <input
+                type="number"
+                placeholder="Price"
+                value={editItem.price}
+                onChange={(e) =>
+                  setEditItem({ ...editItem, price: e.target.value })
+                }
+                className="w-full mb-2 px-3 py-2 border border-gray-300 rounded"
+              />
+              <input
+                type="number"
+                placeholder="Stock"
+                value={editItem.stock}
+                onChange={(e) =>
+                  setEditItem({ ...editItem, stock: e.target.value })
+                }
+                className="w-full mb-2 px-3 py-2 border border-gray-300 rounded"
+              />
+              <input
+                type="text"
+                placeholder="Category"
+                value={editItem.category}
+                onChange={(e) =>
+                  setEditItem({ ...editItem, category: e.target.value })
+                }
+                className="w-full mb-2 px-3 py-2 border border-gray-300 rounded"
+              />
+              <input
+                type="file"
+                onChange={handleImageChange}
+                className="w-full mb-4"
+              />
               <button
                 type="submit"
                 className="w-full bg-lime-700 text-white py-2 px-4 rounded-md hover:bg-lime-600"
               >
-                Update Produt Item
+                Update Product Item
               </button>
             </form>
-
             <button
               onClick={() => setEditModalOpen(false)}
               className="mt-4 w-full text-red-600 hover:text-red-800 py-2 px-4 rounded-md border border-gray-300"

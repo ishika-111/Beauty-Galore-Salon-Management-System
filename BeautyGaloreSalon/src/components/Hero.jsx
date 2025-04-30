@@ -28,7 +28,7 @@ export default function Hero() {
             "Unleash Your Beauty, Redefine Confidence – Step Into the World of
             Beauty Galore Salon."
           </p>
-          <Link to="/services">
+          <Link to="/customer/services">
             <button className="bg-lime-700 px-6 py-2 font-semibold rounded hover:bg-lime-600 transition-all duration-300 ">
               Explore Services
             </button>
@@ -41,7 +41,7 @@ export default function Hero() {
           with an extensive menu of hair, beauty, nail, and grooming options.
         </div>
         <button className=" btn btn-primary rounded text-white ">
-          <Link to="/book">Make an Appointment</Link>
+          <Link to="/customer/book">Make an Appointment</Link>
         </button>
       </div>
       <div className="my-10">
@@ -81,7 +81,7 @@ export default function Hero() {
           {/* Explore button to navigate to ServicePage */}
           <div className="text-center mt-8">
             <button
-              onClick={() => navigate("/services")}
+              onClick={() => navigate("/customer/services")}
               className="bg-lime-800 text-white px-6 py-3 rounded-full font-semibold hover:bg-lime-700 transition"
             >
               Explore All Services

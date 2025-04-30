@@ -7,23 +7,44 @@ const MyOrders = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchMyOrders = async () => {
-      try {
-        const response = await axios.get("/api/orders/my-orders", {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        });
-        setOrders(response.data.orders);
-        setLoading(false);
-      } catch (err) {
-        setError("Failed to load your orders");
-        setLoading(false);
-      }
-    };
-
     fetchMyOrders();
   }, []);
+
+  const fetchMyOrders = async () => {
+    try {
+      const response = await axios.get("/api/orders/my-orders", {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+      setOrders(response.data.orders);
+      setLoading(false);
+    } catch (err) {
+      setError("Failed to load your orders");
+      setLoading(false);
+    }
+  };
+
+  const cancelOrderHandler = async (orderId) => {
+    try {
+      await axios.put(`/api/orders/cancel/${orderId}`, null, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+
+      // Update UI after cancellation
+      setOrders((prev) =>
+        prev.map((order) =>
+          order.id === orderId ? { ...order, status: "CANCELED" } : order
+        )
+      );
+    } catch (err) {
+      alert(
+        err.response?.data?.message || "Failed to cancel the order. Try again."
+      );
+    }
+  };
 
   if (loading) return <p className="text-gray-500">Loading your orders...</p>;
   if (error) return <p className="text-red-600 font-medium">{error}</p>;
@@ -55,7 +76,7 @@ const MyOrders = () => {
                       ? "bg-yellow-100 text-yellow-700"
                       : order.status === "DELIVERED"
                       ? "bg-green-100 text-green-700"
-                      : order.status === "CANCELLED"
+                      : order.status === "CANCELED"
                       ? "bg-red-100 text-red-700"
                       : "bg-blue-100 text-blue-700"
                   }`}
@@ -63,9 +84,11 @@ const MyOrders = () => {
                   {order.status}
                 </span>
               </div>
+
               <p className="mb-2 text-gray-700">
                 <strong>Total Amount:</strong> Rs. {order.totalAmount}
               </p>
+
               <div>
                 <p className="font-medium text-gray-700 mb-1">Items:</p>
                 <ul className="list-disc pl-5 text-gray-600 space-y-1">
@@ -76,6 +99,18 @@ const MyOrders = () => {
                   ))}
                 </ul>
               </div>
+
+              {/* ✅ Show Cancel button only if conditions are met */}
+              {order.status === "PENDING" &&
+                order.orderType === "PICKUP" &&
+                order.paymentMethod === "CARD" && (
+                  <button
+                    onClick={() => cancelOrderHandler(order.id)}
+                    className="mt-4 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition"
+                  >
+                    Cancel Order
+                  </button>
+                )}
             </div>
           ))}
         </div>

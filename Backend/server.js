@@ -42,6 +42,7 @@ app.use("/api/admin/dashboard", dashboardRouter);
 app.use("/api/cart", cartRouter);
 app.use("/api/customer", profileRouter);
 app.use("/api/orders", orderRouter);
+
 app.use("/api/payment", paymentRouter);
 
 const createDefaultAdmin = async () => {

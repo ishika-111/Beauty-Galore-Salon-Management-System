@@ -7,98 +7,64 @@ import {
   FaShoppingCart,
   FaCog,
   FaSignOutAlt,
+  FaCalendarCheck,
 } from "react-icons/fa";
 
 const SideNavbar = () => {
   return (
-    <aside className="bg-gray-900 text-white w-64 h-screen  z-50 shadow-lg overflow-y-auto flex flex-col">
-      <div className="p-6 flex items-center space-x-3 border-b border-gray-700">
-        <span className="text-2xl font-bold">🍽 MySalon</span>
+    <aside className="bg-[#F9FCEF] text-gray-900 w-64 h-screen shadow-lg flex flex-col z-50 overflow-y-auto">
+      {/* Logo */}
+      <div className="p-6 flex items-center gap-3 border-b border-gray-300">
+        <span className="text-xl font-bold tracking-wide break-words">
+          BeautyGaloreAdmin
+        </span>
       </div>
 
+      {/* Navigation */}
       <nav className="flex-grow mt-6">
-        <ul className="space-y-2">
-          <li>
-            <NavLink
-              to="/dashboard"
-              className={({ isActive }) =>
-                `flex items-center gap-3 px-6 py-3 text-sm hover:bg-gray-800 transition-all ${
-                  isActive ? "bg-gray-700" : ""
-                }`
-              }
-            >
-              <FaTachometerAlt className="w-5 h-5" /> Dashboard
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/add/product"
-              className={({ isActive }) =>
-                `flex items-center gap-3 px-6 py-3 text-sm hover:bg-gray-800 transition-all ${
-                  isActive ? "bg-gray-700" : ""
-                }`
-              }
-            >
-              <FaPlusCircle className="w-5 h-5" /> Add Product
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/product/list"
-              className={({ isActive }) =>
-                `flex items-center gap-3 px-6 py-3 text-sm hover:bg-gray-800 transition-all ${
-                  isActive ? "bg-gray-700" : ""
-                }`
-              }
-            >
-              <FaList className="w-5 h-5" /> Product List
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/orders"
-              className={({ isActive }) =>
-                `flex items-center gap-3 px-6 py-3 text-sm hover:bg-gray-800 transition-all ${
-                  isActive ? "bg-gray-700" : ""
-                }`
-              }
-            >
-              <FaShoppingCart className="w-5 h-5" /> Orders
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/settings"
-              className={({ isActive }) =>
-                `flex items-center gap-3 px-6 py-3 text-sm hover:bg-gray-800 transition-all ${
-                  isActive ? "bg-gray-700" : ""
-                }`
-              }
-            >
-              <FaCog className="w-5 h-5" /> Settings
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/appoinment"
-              className={({ isActive }) =>
-                `flex items-center gap-3 px-6 py-3 text-sm hover:bg-gray-800 transition-all ${
-                  isActive ? "bg-gray-700" : ""
-                }`
-              }
-            >
-              <FaCog className="w-5 h-5" /> appoinment
-            </NavLink>
-          </li>
+        <ul className="flex flex-col gap-2">
+          <NavItem to="/dashboard" icon={FaTachometerAlt} label="Dashboard" />
+          <NavItem to="/add/product" icon={FaPlusCircle} label="Add Product" />
+          <NavItem to="/product/list" icon={FaList} label="Product List" />
+          <NavItem to="/orders" icon={FaShoppingCart} label="Orders" />
+          <NavItem to="/settings" icon={FaCog} label="Settings" />
+          <NavItem
+            to="/appointment"
+            icon={FaCalendarCheck}
+            label="Appointment"
+          />
         </ul>
       </nav>
 
-      <div className="px-4 pb-6">
-        <button className="flex items-center gap-3 w-full px-6 py-3 text-sm text-left bg-red-600 hover:bg-red-700 transition-all">
-          <FaSignOutAlt className="w-5 h-5" /> Logout
+      {/* Logout Button */}
+      <div className="px-6 py-4 border-t border-gray-300">
+        <button className="flex items-center gap-3 w-full px-4 py-2 text-sm font-medium text-white bg-lime-800 rounded-lg hover:bg-lime-700 transition-all">
+          <FaSignOutAlt className="w-5 h-5" />
+          Logout
         </button>
       </div>
     </aside>
+  );
+};
+
+// Reusable NavItem component
+const NavItem = ({ to, icon: Icon, label }) => {
+  return (
+    <li>
+      <NavLink
+        to={to}
+        className={({ isActive }) =>
+          `flex items-center gap-3 px-6 py-3 text-sm font-semibold rounded-lg transition-all ${
+            isActive
+              ? "bg-green-200 text-green-800"
+              : "hover:bg-green-100 hover:text-green-800"
+          }`
+        }
+      >
+        <Icon className="w-5 h-5" />
+        {label}
+      </NavLink>
+    </li>
   );
 };
 

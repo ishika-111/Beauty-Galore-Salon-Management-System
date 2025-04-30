@@ -84,6 +84,8 @@ model Product {
   name          String
   description   String?
   price         Float
+  stock         Int           // <-- ADD this if not already added
+  category      ProductCategory
   available     Boolean       @default(true)
   imageUrl      String?
   user          User[]        // Users who own the product
@@ -159,4 +161,13 @@ enum OrderStatus {
   CANCELED
   DELIVERED
 }
+
+enum ProductCategory {
+  HAIR_TOOLS_AND_APPLIANCES
+  HAIR_COLOR
+  HAIR_CARE
+  SKINCARE
+  NAILS
+}
+
 

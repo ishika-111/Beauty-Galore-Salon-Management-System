@@ -1,17 +1,24 @@
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 import { FaShoppingCart, FaUser } from "react-icons/fa";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function CustomerNavbar() {
   const location = useLocation();
   const navigate = useNavigate();
+  const [cartCount, setCartCount] = useState(0);
+
   const [isProfileOpen, setIsProfileOpen] = useState(false);
 
   const handleLogout = () => {
     localStorage.clear(); // Or use your logout logic (Cookies.remove, etc.)
     navigate("/");
   };
+  useEffect(() => {
+    // Example if you store cart in localStorage
+    const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
+    setCartCount(storedCart.length);
+  }, []);
 
   return (
     <nav className="flex justify-between items-center p-10 z-50 relative">
@@ -65,7 +72,7 @@ export default function CustomerNavbar() {
         <NavLink to="/customer/cart">
           <button className="p-2 font-bold text-white">
             <FaShoppingCart
-              className="text-lime-800 cursor-pointer transition"
+              className="text-lime-800 cursor-pointer hover:text-lime-500 transition"
               size={24}
             />
           </button>
@@ -95,7 +102,7 @@ export default function CustomerNavbar() {
               </li>
               <li>
                 <Link
-                  to="/customer/book/get"
+                  to="/customer/book/my-appointments"
                   className="block px-5 py-3 text-gray-800 hover:bg-lime-100 hover:text-lime-800 font-medium transition duration-200"
                 >
                   📅 My Appointments

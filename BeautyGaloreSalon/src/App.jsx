@@ -55,7 +55,10 @@ export default function App() {
           <Route path="/customer/services/:id" element={<ServiceDetails />} />
           <Route path="/customer/aboutus" element={<AboutUsPage />} />
           <Route path="/customer/book" element={<BookNowPage />} />
-          <Route path="/customer/book/get" element={<AppointmentList />} />
+          <Route
+            path="/customer/book/my-appointments"
+            element={<AppointmentList />}
+          />
           <Route path="/customer/orders/mine" element={<MyOrders />} />
 
           <Route path="/customer/products" element={<ProductPage />} />

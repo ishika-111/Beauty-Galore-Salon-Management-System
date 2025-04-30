@@ -56,10 +56,18 @@ export const updateCartItem = async (req, res) => {
     // Find the cart item
     const cartItem = await prisma.cart.findUnique({
       where: { id: parseInt(cartItemId) },
+      include: { product: true }, // <-- Include product info
     });
 
     if (!cartItem || cartItem.userId !== userId) {
       return res.status(404).json({ error: "Cart item not found" });
+    }
+
+    // Check stock availability
+    if (quantity > cartItem.product.stock) {
+      return res
+        .status(400)
+        .json({ error: "Quantity exceeds available stock" });
     }
 
     // Update the quantity
@@ -122,24 +130,5 @@ export const removeFromCart = async (req, res) => {
   } catch (error) {
     console.error("Error removing from cart:", error);
     res.status(500).json({ error: "Internal Server Error" });
-  }
-};
-
-export const getAllUserAppointments = async (req, res) => {
-  try {
-    if (!req.adminId) {
-      return res.status(403).json({ message: "Access denied" });
-    }
-
-    const appointments = await prisma.appointment.findMany();
-
-    if (appointments.length === 0) {
-      return res.status(404).json({ error: "No appointments found" });
-    }
-
-    res.status(200).json({ appointments });
-  } catch (error) {
-    console.error("❌ Error fetching appointments:", error);
-    res.status(500).json({ error: "Failed to fetch appointments" });
   }
 };

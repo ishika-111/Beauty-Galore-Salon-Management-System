@@ -139,11 +139,26 @@ export default function BookNow() {
               <option value="" disabled>
                 Select a Service
               </option>
-              <option value="Haircut">Haircut</option>
-              <option value="Massage">Massage</option>
-              <option value="Consultation">Consultation</option>
-              <option value="Facial">Facial</option>
-              <option value="Manicure">Manicure</option>
+              {/* New services added */}
+              <option value="Hair Services (Ladies)">
+                Hair Services (Ladies)
+              </option>
+              <option value="Hair Services (Gents)">
+                Hair Services (Gents)
+              </option>
+              <option value="Facial & Skincare">Facial & Skincare</option>
+              <option value="Manicure & Pedicure">Manicure & Pedicure</option>
+              <option value="Hair Coloring">Hair Coloring</option>
+              <option value="Bridal Makeup & Styling">
+                Bridal Makeup & Styling
+              </option>
+              <option value="Lash Extension">Lash Extension</option>
+              <option value="Nail Shaping">Nail Shaping</option>
+              <option value="Nail Art">Nail Art</option>
+              <option value="Party Makeup">Party Makeup</option>
+              <option value="Normal Makeup">Normal Makeup</option>
+              <option value="Waxing">Waxing</option>
+              <option value="Threading">Threading</option>
             </select>
           </div>
 
@@ -161,7 +176,7 @@ export default function BookNow() {
           </div>
 
           <p className="text-gray-600 text-sm mb-6">
-            Once you make a booking, you will receive a pop up message from our
+            Once you make a booking, you will receive an email message from our
             website.
           </p>
 
